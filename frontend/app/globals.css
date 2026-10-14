@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --primary: 175 77% 26%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 222 47% 15%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 19% 35%;
+    --accent: 172 50% 93%;
+    --accent-foreground: 175 80% 18%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 20% 86%;
+    --input: 214 20% 80%;
+    --ring: 175 77% 30%;
+    --radius: 0.65rem;
+    --hazard: 0 74% 42%;
+    --hazard-foreground: 0 0% 100%;
+    --hazard-soft: 0 86% 97%;
+    --p1: 0 72% 42%;
+    --p2: 25 90% 37%;
+    --p3: 217 76% 45%;
+    --p4: 215 16% 40%;
+    --success: 142 72% 27%;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 96%;
+    --card: 222 40% 10%;
+    --card-foreground: 210 40% 96%;
+    --primary: 172 66% 45%;
+    --primary-foreground: 222 47% 8%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 217 33% 15%;
+    --muted-foreground: 215 20% 72%;
+    --accent: 175 40% 16%;
+    --accent-foreground: 172 66% 75%;
+    --destructive: 0 84% 62%;
+    --destructive-foreground: 222 47% 8%;
+    --border: 217 33% 20%;
+    --input: 217 33% 26%;
+    --ring: 172 66% 45%;
+    --hazard: 0 85% 62%;
+    --hazard-foreground: 222 47% 8%;
+    --hazard-soft: 0 55% 13%;
+    --p1: 0 85% 66%;
+    --p2: 30 95% 60%;
+    --p3: 213 90% 70%;
+    --p4: 215 20% 68%;
+    --success: 142 60% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+}

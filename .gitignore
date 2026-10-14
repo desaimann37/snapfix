@@ -1,0 +1,36 @@
+# secrets
+.env
+.env.local
+backend/.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# node / next
+node_modules/
+.next/
+out/
+frontend/test-results/
+frontend/playwright-report/
+*.tsbuildinfo
+next-env.d.ts
+
+# app data
+backend/data/
+*.db
+*.sqlite
+
+# eval outputs (keep the folder, commit summaries deliberately)
+eval/results/*.json
+!eval/results/.gitkeep
+
+# misc
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
