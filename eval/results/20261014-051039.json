@@ -1,0 +1,3622 @@
+{
+  "run_id": "20261014-051039",
+  "timestamp": "2026-10-14T05:10:39.194098+00:00",
+  "mode": "mock",
+  "note": "MOCK MODE: predictions come from the keyword classifier, not Claude. Run with ANTHROPIC_API_KEY set for real model accuracy.",
+  "models": {
+    "main": "claude-sonnet-5-5",
+    "fast": "claude-haiku-5-5"
+  },
+  "prompt_version": "extract_v1",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "n_items": 98,
+  "n_with_photo": 0,
+  "metrics": {
+    "category_accuracy": 0.8571,
+    "trade_accuracy": 0.898,
+    "severity_exact": 0.7449,
+    "severity_within_1": 0.9796,
+    "hazard_recall": 1.0,
+    "hazard_precision": 0.95,
+    "hazard_counts": {
+      "tp": 19,
+      "fn": 0,
+      "fp": 1
+    },
+    "location_accuracy": 1.0,
+    "location_items": 98,
+    "location_accuracy_without_qr": 1.0,
+    "location_items_without_qr": 17,
+    "dedupe_precision": 0.9444,
+    "dedupe_recall": 1.0,
+    "dedupe_f1": 0.9714,
+    "dedupe_pairs": {
+      "true_same": 17,
+      "pred_same": 18,
+      "both": 17
+    },
+    "latency_ms": {
+      "p50": 35.5,
+      "p95": 52.449999999999974,
+      "mean": 37.2
+    },
+    "cost_per_report_usd": 0.0,
+    "cost_total_usd": 0.0
+  },
+  "baseline": {
+    "name": "keyword classifier (no LLM)",
+    "category_accuracy": 0.8571,
+    "trade_accuracy": 0.898,
+    "severity_exact": 0.7449,
+    "severity_within_1": 0.9796
+  },
+  "confusion_trade": {
+    "labels": [
+      "Plumbing",
+      "Electrical",
+      "HVAC",
+      "Carpentry/Doors & Locks",
+      "Custodial",
+      "Grounds",
+      "Elevator",
+      "IT/AV",
+      "Safety/Environmental",
+      "General"
+    ],
+    "matrix": [
+      [
+        16,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        0,
+        12,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        15,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        8
+      ]
+    ]
+  },
+  "items": [
+    {
+      "i": 1,
+      "text": "the projector in 204 won't turn on",
+      "has_image": false,
+      "true": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "204",
+        "group": "G1"
+      },
+      "pred": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "204",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2
+      },
+      "ticket_id": "cc665f05-dd9f-4710-b3eb-1da24e5f2b33",
+      "merged": false,
+      "server_ms": 62,
+      "wall_ms": 96,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 2,
+      "text": "no display from the projector in classroom 204",
+      "has_image": false,
+      "true": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "204",
+        "group": "G1"
+      },
+      "pred": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "204",
+        "location_method": "text",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2
+      },
+      "ticket_id": "cc665f05-dd9f-4710-b3eb-1da24e5f2b33",
+      "merged": true,
+      "server_ms": 39,
+      "wall_ms": 59,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 3,
+      "text": "projector is dead and my lecture starts in 10 minutes",
+      "has_image": false,
+      "true": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "204",
+        "group": "G1"
+      },
+      "pred": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "204",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2
+      },
+      "ticket_id": "cc665f05-dd9f-4710-b3eb-1da24e5f2b33",
+      "merged": true,
+      "server_ms": 41,
+      "wall_ms": 57,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 4,
+      "text": "toilet in the first floor restroom keeps running nonstop",
+      "has_image": false,
+      "true": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "128",
+        "group": "G2"
+      },
+      "pred": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "128",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "ea1ae442-5560-485a-acd2-5e663be584ff",
+      "merged": false,
+      "server_ms": 36,
+      "wall_ms": 55,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 5,
+      "text": "the toilet won't stop running in the library 1st floor bathroom",
+      "has_image": false,
+      "true": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "128",
+        "group": "G2"
+      },
+      "pred": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "128",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "ea1ae442-5560-485a-acd2-5e663be584ff",
+      "merged": true,
+      "server_ms": 35,
+      "wall_ms": 52,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 6,
+      "text": "trash cans at the food court are overflowing",
+      "has_image": false,
+      "true": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "140",
+        "group": "G3"
+      },
+      "pred": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "140",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "dce7b4b0-745f-4088-b76a-38f9578fd2d2",
+      "merged": false,
+      "server_ms": 34,
+      "wall_ms": 49,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 7,
+      "text": "garbage everywhere by the bins in the food court",
+      "has_image": false,
+      "true": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "140",
+        "group": "G3"
+      },
+      "pred": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "140",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "dce7b4b0-745f-4088-b76a-38f9578fd2d2",
+      "merged": true,
+      "server_ms": 33,
+      "wall_ms": 50,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 8,
+      "text": "bins are full and trash is spilling onto the floor near the food court",
+      "has_image": false,
+      "true": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "140",
+        "group": "G3"
+      },
+      "pred": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "140",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "dce7b4b0-745f-4088-b76a-38f9578fd2d2",
+      "merged": true,
+      "server_ms": 40,
+      "wall_ms": 58,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 9,
+      "text": "the sink in the fluids lab is leaking under the cabinet",
+      "has_image": false,
+      "true": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "401",
+        "group": "G4"
+      },
+      "pred": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "401",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "1e8af834-65e6-4891-aaea-6069df261ee7",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 49,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 10,
+      "text": "water leaking from the pipe under the lab sink",
+      "has_image": false,
+      "true": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "401",
+        "group": "G4"
+      },
+      "pred": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "401",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "1e8af834-65e6-4891-aaea-6069df261ee7",
+      "merged": true,
+      "server_ms": 31,
+      "wall_ms": 47,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 11,
+      "text": "it's freezing in the quiet reading room",
+      "has_image": false,
+      "true": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "220",
+        "group": "G5"
+      },
+      "pred": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "220",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2
+      },
+      "ticket_id": "b33a8026-752a-425e-9615-ba19059a10c5",
+      "merged": false,
+      "server_ms": 32,
+      "wall_ms": 45,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 12,
+      "text": "so cold in here everyone has jackets on",
+      "has_image": false,
+      "true": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "220",
+        "group": "G5"
+      },
+      "pred": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "220",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2
+      },
+      "ticket_id": "b33a8026-752a-425e-9615-ba19059a10c5",
+      "merged": true,
+      "server_ms": 26,
+      "wall_ms": 39,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 13,
+      "text": "no heat in the quiet reading room on the 2nd floor of the library",
+      "has_image": false,
+      "true": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "220",
+        "group": "G5"
+      },
+      "pred": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "220",
+        "location_method": "text",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2
+      },
+      "ticket_id": "b33a8026-752a-425e-9615-ba19059a10c5",
+      "merged": true,
+      "server_ms": 30,
+      "wall_ms": 47,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 14,
+      "text": "half the lights in the 2nd floor hallway of the student center are out",
+      "has_image": false,
+      "true": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "249",
+        "group": "G6"
+      },
+      "pred": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "249",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1
+      },
+      "ticket_id": "d393882e-fc35-478a-9906-775075c457e1",
+      "merged": false,
+      "server_ms": 36,
+      "wall_ms": 50,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 15,
+      "text": "hallway lights are dead outside the game room",
+      "has_image": false,
+      "true": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "249",
+        "group": "G6"
+      },
+      "pred": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "249",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1
+      },
+      "ticket_id": "d393882e-fc35-478a-9906-775075c457e1",
+      "merged": true,
+      "server_ms": 27,
+      "wall_ms": 41,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 16,
+      "text": "I smell gas near room 210",
+      "has_image": false,
+      "true": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "210",
+        "group": "G7"
+      },
+      "pred": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "gas",
+        "room": "210",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "543e4707-cd87-4753-8033-ea55a1e8b712",
+      "merged": false,
+      "server_ms": 24,
+      "wall_ms": 86,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 17,
+      "text": "strong rotten egg smell in the chemistry lab",
+      "has_image": false,
+      "true": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "210",
+        "group": "G7"
+      },
+      "pred": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "gas",
+        "room": "210",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "543e4707-cd87-4753-8033-ea55a1e8b712",
+      "merged": true,
+      "server_ms": 25,
+      "wall_ms": 40,
+      "cost_usd": 0.0,
+      "llm_mode": "rules",
+      "notes": ""
+    },
+    {
+      "i": 18,
+      "text": "elevator in the library isn't working",
+      "has_image": false,
+      "true": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "130",
+        "group": "G8"
+      },
+      "pred": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "130",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3
+      },
+      "ticket_id": "b91c8bdc-4f25-4904-927f-a50d63a670cd",
+      "merged": false,
+      "server_ms": 30,
+      "wall_ms": 45,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 19,
+      "text": "the library elevator is stuck on the first floor and won't open",
+      "has_image": false,
+      "true": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "130",
+        "group": "G8"
+      },
+      "pred": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "130",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3
+      },
+      "ticket_id": "b91c8bdc-4f25-4904-927f-a50d63a670cd",
+      "merged": true,
+      "server_ms": 29,
+      "wall_ms": 45,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 20,
+      "text": "elevator out of service in the library lobby",
+      "has_image": false,
+      "true": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "130",
+        "group": "G8"
+      },
+      "pred": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "130",
+        "location_method": "text",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3
+      },
+      "ticket_id": "b91c8bdc-4f25-4904-927f-a50d63a670cd",
+      "merged": true,
+      "server_ms": 29,
+      "wall_ms": 43,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 21,
+      "text": "faucet in the 2nd floor women's restroom of the library drips constantly",
+      "has_image": false,
+      "true": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "226",
+        "group": null
+      },
+      "pred": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "226",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "80e1b918-ef1d-4525-9fdc-eeed7084bf71",
+      "merged": false,
+      "server_ms": 38,
+      "wall_ms": 54,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 22,
+      "text": "the bathroom sink is clogged and full of water",
+      "has_image": false,
+      "true": {
+        "category": "clogged_drain",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "245",
+        "group": null
+      },
+      "pred": {
+        "category": "clogged_drain",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "245",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "clogged_drain",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "f6f3f7fd-4fbd-4165-b6dc-305f45d589a4",
+      "merged": false,
+      "server_ms": 37,
+      "wall_ms": 62,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 23,
+      "text": "toilet overflowing all over the floor in the 3rd floor restroom",
+      "has_image": false,
+      "true": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "345",
+        "group": null
+      },
+      "pred": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "345",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "b87d185c-08aa-41a4-8e87-b138899a89f2",
+      "merged": false,
+      "server_ms": 33,
+      "wall_ms": 46,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 24,
+      "text": "urinal won't flush",
+      "has_image": false,
+      "true": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "110",
+        "group": null
+      },
+      "pred": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "110",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "3802a42c-ca3a-4d93-8681-3c247075160f",
+      "merged": false,
+      "server_ms": 28,
+      "wall_ms": 40,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 25,
+      "text": "bottle filler isn't dispensing any water",
+      "has_image": false,
+      "true": {
+        "category": "fountain_broken",
+        "trade": "Plumbing",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "215",
+        "group": "G9"
+      },
+      "pred": {
+        "category": "fountain_broken",
+        "trade": "Plumbing",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "215",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "fountain_broken",
+        "trade": "Plumbing",
+        "severity": 1
+      },
+      "ticket_id": "8478e3cb-6e00-463d-931e-7c0ed8fad5b4",
+      "merged": false,
+      "server_ms": 30,
+      "wall_ms": 56,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": "same fountain"
+    },
+    {
+      "i": 26,
+      "text": "water pouring out of the wall in the mechanical room",
+      "has_image": false,
+      "true": {
+        "category": "flooding",
+        "trade": "Plumbing",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "408",
+        "group": null
+      },
+      "pred": {
+        "category": "flooding",
+        "trade": "Plumbing",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "water_intrusion",
+        "room": "408",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "flooding",
+        "trade": "Plumbing",
+        "severity": 4
+      },
+      "ticket_id": "35ffea40-ea73-4146-b249-7f1e1f9cdc46",
+      "merged": false,
+      "server_ms": 32,
+      "wall_ms": 83,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 27,
+      "text": "there's a flood in the 1st floor women's room in engineering",
+      "has_image": false,
+      "true": {
+        "category": "flooding",
+        "trade": "Plumbing",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "111",
+        "group": null
+      },
+      "pred": {
+        "category": "flooding",
+        "trade": "Plumbing",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "water_intrusion",
+        "room": "111",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "flooding",
+        "trade": "Plumbing",
+        "severity": 4
+      },
+      "ticket_id": "b10e9d3d-a40c-42ca-979b-915a3959dd53",
+      "merged": false,
+      "server_ms": 30,
+      "wall_ms": 87,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 28,
+      "text": "slow drain in the cafe sink",
+      "has_image": false,
+      "true": {
+        "category": "clogged_drain",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "125",
+        "group": null
+      },
+      "pred": {
+        "category": "clogged_drain",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "125",
+        "location_method": "qr",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "clogged_drain",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "275d1481-e247-4374-b58f-93481e38e6cc",
+      "merged": false,
+      "server_ms": 34,
+      "wall_ms": 48,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 29,
+      "text": "one of the ceiling lights is flickering in the seminar room",
+      "has_image": false,
+      "true": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "405",
+        "group": null
+      },
+      "pred": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "405",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1
+      },
+      "ticket_id": "4e7ac9b3-4c57-4e66-bbf1-616bb3c55a98",
+      "merged": false,
+      "server_ms": 34,
+      "wall_ms": 47,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 30,
+      "text": "the light over my desk is out",
+      "has_image": false,
+      "true": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "228",
+        "group": null
+      },
+      "pred": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "228",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1
+      },
+      "ticket_id": "b13d8af9-c1ed-4a9e-b9ee-3a41ff03d9d5",
+      "merged": false,
+      "server_ms": 32,
+      "wall_ms": 45,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 31,
+      "text": "none of the outlets on the bench work",
+      "has_image": false,
+      "true": {
+        "category": "power_outlet_dead",
+        "trade": "Electrical",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "201",
+        "group": null
+      },
+      "pred": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "201",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1
+      },
+      "ticket_id": "0933e52b-6bfe-4d69-a43e-4d6633b58682",
+      "merged": false,
+      "server_ms": 30,
+      "wall_ms": 41,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 32,
+      "text": "outlet by the window has no power",
+      "has_image": false,
+      "true": {
+        "category": "power_outlet_dead",
+        "trade": "Electrical",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "223",
+        "group": null
+      },
+      "pred": {
+        "category": "power_outlet_dead",
+        "trade": "Electrical",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "223",
+        "location_method": "qr",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "power_outlet_dead",
+        "trade": "Electrical",
+        "severity": 2
+      },
+      "ticket_id": "7f1f5be4-5bab-4f54-9e68-02d46bcc3b48",
+      "merged": false,
+      "server_ms": 31,
+      "wall_ms": 44,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 33,
+      "text": "wires are hanging out of the ceiling and sparking",
+      "has_image": false,
+      "true": {
+        "category": "exposed_wiring",
+        "trade": "Electrical",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "243",
+        "group": null
+      },
+      "pred": {
+        "category": "exposed_wiring",
+        "trade": "Electrical",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "electrical",
+        "room": "243",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "exposed_wiring",
+        "trade": "Electrical",
+        "severity": 4
+      },
+      "ticket_id": "39e9a623-75c0-4cd4-bae3-862a80911118",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 93,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 34,
+      "text": "there are exposed wires where the wall plate is missing in room 305",
+      "has_image": false,
+      "true": {
+        "category": "exposed_wiring",
+        "trade": "Electrical",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "305",
+        "group": null
+      },
+      "pred": {
+        "category": "exposed_wiring",
+        "trade": "Electrical",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "electrical",
+        "room": "305",
+        "location_method": "text",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "exposed_wiring",
+        "trade": "Electrical",
+        "severity": 4
+      },
+      "ticket_id": "0c91dcea-0a96-4616-aa27-8cc372385f58",
+      "merged": false,
+      "server_ms": 38,
+      "wall_ms": 90,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 35,
+      "text": "the outlet behind the printer is scorched and smells like burning",
+      "has_image": false,
+      "true": {
+        "category": "exposed_wiring",
+        "trade": "Electrical",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "133",
+        "group": null
+      },
+      "pred": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "fire_smoke",
+        "room": "133",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "ba0ccbb0-64bb-434a-9748-8d265e1f50bb",
+      "merged": false,
+      "server_ms": 33,
+      "wall_ms": 79,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 36,
+      "text": "it's way too hot in lecture hall 102",
+      "has_image": false,
+      "true": {
+        "category": "too_hot",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "102",
+        "group": null
+      },
+      "pred": {
+        "category": "too_hot",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "102",
+        "location_method": "text",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "too_hot",
+        "trade": "HVAC",
+        "severity": 2
+      },
+      "ticket_id": "53728557-2f32-43ce-8486-d651d3a29827",
+      "merged": false,
+      "server_ms": 28,
+      "wall_ms": 40,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 37,
+      "text": "AC isn't working in the fitness studio",
+      "has_image": false,
+      "true": {
+        "category": "too_hot",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "340",
+        "group": null
+      },
+      "pred": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "340",
+        "location_method": "qr",
+        "confidence": 0.3
+      },
+      "baseline": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2
+      },
+      "ticket_id": "557abb2d-2722-4341-a17d-d50fbb4e71ce",
+      "merged": false,
+      "server_ms": 29,
+      "wall_ms": 41,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 38,
+      "text": "it's like 85 degrees in the server room",
+      "has_image": false,
+      "true": {
+        "category": "too_hot",
+        "trade": "HVAC",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "330",
+        "group": null
+      },
+      "pred": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "330",
+        "location_method": "qr",
+        "confidence": 0.3
+      },
+      "baseline": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2
+      },
+      "ticket_id": "59de0dea-bdc8-4de9-a177-0a4a17b4d264",
+      "merged": false,
+      "server_ms": 32,
+      "wall_ms": 45,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 39,
+      "text": "the vent is rattling really loudly",
+      "has_image": false,
+      "true": {
+        "category": "hvac_noise",
+        "trade": "HVAC",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "207",
+        "group": null
+      },
+      "pred": {
+        "category": "hvac_noise",
+        "trade": "HVAC",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "207",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "hvac_noise",
+        "trade": "HVAC",
+        "severity": 1
+      },
+      "ticket_id": "f1102d73-0f6b-491c-ab86-dafd39651523",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 48,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 40,
+      "text": "banging noise from the ceiling vents every few minutes",
+      "has_image": false,
+      "true": {
+        "category": "hvac_noise",
+        "trade": "HVAC",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "252",
+        "group": null
+      },
+      "pred": {
+        "category": "hvac_noise",
+        "trade": "HVAC",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "252",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "hvac_noise",
+        "trade": "HVAC",
+        "severity": 1
+      },
+      "ticket_id": "b503a5dc-75df-4560-9a99-77b2b9dfe5a9",
+      "merged": false,
+      "server_ms": 30,
+      "wall_ms": 43,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 41,
+      "text": "the door to the robotics lab won't close all the way",
+      "has_image": false,
+      "true": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "301",
+        "group": null
+      },
+      "pred": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "301",
+        "location_method": "qr",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2
+      },
+      "ticket_id": "86f1d218-2a79-4510-a5a8-0c7eee486633",
+      "merged": false,
+      "server_ms": 33,
+      "wall_ms": 45,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 42,
+      "text": "front entrance door slams shut really hard",
+      "has_image": false,
+      "true": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "108",
+        "group": null
+      },
+      "pred": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "108",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2
+      },
+      "ticket_id": "382e4848-5764-4159-be70-7e88577b746a",
+      "merged": false,
+      "server_ms": 31,
+      "wall_ms": 44,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 43,
+      "text": "the fire door on the 4th floor won't latch",
+      "has_image": false,
+      "true": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "418",
+        "group": "tricky: fire door is not a fire"
+      },
+      "pred": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "418",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2
+      },
+      "ticket_id": "787c1418-b6c7-455b-8963-e357615b6e82",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 46,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 44,
+      "text": "card reader won't open the media lab door",
+      "has_image": false,
+      "true": {
+        "category": "lock_broken",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "231",
+        "group": null
+      },
+      "pred": {
+        "category": "lock_broken",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "231",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "lock_broken",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3
+      },
+      "ticket_id": "9e04e741-252f-4c41-b33d-89626bfef2de",
+      "merged": false,
+      "server_ms": 31,
+      "wall_ms": 43,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 45,
+      "text": "my office door lock is broken and I can't lock it",
+      "has_image": false,
+      "true": {
+        "category": "lock_broken",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "410",
+        "group": null
+      },
+      "pred": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "410",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2
+      },
+      "ticket_id": "1dc34fc3-c466-4b78-bbcd-4e42157019c8",
+      "merged": false,
+      "server_ms": 36,
+      "wall_ms": 50,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 46,
+      "text": "a chair in the multipurpose room has a broken leg",
+      "has_image": false,
+      "true": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "347",
+        "group": null
+      },
+      "pred": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "347",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1
+      },
+      "ticket_id": "3028215b-96f1-4bd5-81a9-b5d5088c5f4e",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 48,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 47,
+      "text": "the study table wobbles a lot",
+      "has_image": false,
+      "true": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "122",
+        "group": null
+      },
+      "pred": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "122",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1
+      },
+      "ticket_id": "1dd32f87-14d9-4151-a945-8e076fe97f88",
+      "merged": false,
+      "server_ms": 37,
+      "wall_ms": 50,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 48,
+      "text": "window is cracked in the graduate offices",
+      "has_image": false,
+      "true": {
+        "category": "broken_window",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "314",
+        "group": null
+      },
+      "pred": {
+        "category": "broken_window",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "314",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "broken_window",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3
+      },
+      "ticket_id": "4dc1526d-a486-473c-a596-1031c80dce37",
+      "merged": false,
+      "server_ms": 39,
+      "wall_ms": 53,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 49,
+      "text": "the window in the staff lounge won't close",
+      "has_image": false,
+      "true": {
+        "category": "broken_window",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "327",
+        "group": null
+      },
+      "pred": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "327",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2
+      },
+      "ticket_id": "c66dcba3-9a15-4dac-ac1b-78cbf04d1702",
+      "merged": false,
+      "server_ms": 36,
+      "wall_ms": 52,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 50,
+      "text": "someone spilled coffee all over the floor by the circulation desk",
+      "has_image": false,
+      "true": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "120",
+        "group": null
+      },
+      "pred": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "120",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 2
+      },
+      "ticket_id": "a9f99095-565c-4e3e-8282-53affac843f7",
+      "merged": false,
+      "server_ms": 41,
+      "wall_ms": 54,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 51,
+      "text": "big puddle of soda near the bookstore entrance",
+      "has_image": false,
+      "true": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "146",
+        "group": null
+      },
+      "pred": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "146",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 2
+      },
+      "ticket_id": "16a92830-2d09-41a0-99f4-f90ea12fbd41",
+      "merged": false,
+      "server_ms": 30,
+      "wall_ms": 44,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 52,
+      "text": "recycling bins are packed full",
+      "has_image": false,
+      "true": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "333",
+        "group": null
+      },
+      "pred": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "333",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "eb780be2-22d8-4aa1-9911-b51bc6ea9f39",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 49,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 53,
+      "text": "no soap in the dispensers",
+      "has_image": false,
+      "true": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "212",
+        "group": null
+      },
+      "pred": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "212",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "a07dfeb6-da09-4404-9d39-ab0ba85ca3e6",
+      "merged": false,
+      "server_ms": 46,
+      "wall_ms": 59,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 54,
+      "text": "out of paper towels in the women's restroom",
+      "has_image": false,
+      "true": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "226",
+        "group": null
+      },
+      "pred": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "226",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "0aaa6ebf-5510-48b4-ad4d-a1c7ce6d50eb",
+      "merged": false,
+      "server_ms": 36,
+      "wall_ms": 51,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 55,
+      "text": "toilet paper is out in the 4th floor restroom",
+      "has_image": false,
+      "true": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "412",
+        "group": null
+      },
+      "pred": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "412",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "58e5350c-94c8-4ddb-852a-55ad69cadc31",
+      "merged": false,
+      "server_ms": 38,
+      "wall_ms": 52,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 56,
+      "text": "saw a mouse run behind the counter",
+      "has_image": false,
+      "true": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "125",
+        "group": null
+      },
+      "pred": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "125",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2
+      },
+      "ticket_id": "4608e53a-d722-4c1a-bec7-f623562d75bf",
+      "merged": false,
+      "server_ms": 36,
+      "wall_ms": 49,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 57,
+      "text": "ants all over the break room counter",
+      "has_image": false,
+      "true": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "327",
+        "group": null
+      },
+      "pred": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "327",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2
+      },
+      "ticket_id": "a0baa187-b407-4811-b911-34a839f80e1d",
+      "merged": false,
+      "server_ms": 33,
+      "wall_ms": 50,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 58,
+      "text": "cockroach in the catering kitchen",
+      "has_image": false,
+      "true": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "349",
+        "group": null
+      },
+      "pred": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "349",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "pest",
+        "trade": "Custodial",
+        "severity": 2
+      },
+      "ticket_id": "1d1393d5-91bb-4ee6-8d66-ac8b2b0d55d2",
+      "merged": false,
+      "server_ms": 34,
+      "wall_ms": 47,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 59,
+      "text": "someone spray painted graffiti on the stall wall",
+      "has_image": false,
+      "true": {
+        "category": "graffiti",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "316",
+        "group": null
+      },
+      "pred": {
+        "category": "graffiti",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "316",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "graffiti",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "7f428c06-ebf7-4151-a7eb-21b5ecd2af82",
+      "merged": false,
+      "server_ms": 32,
+      "wall_ms": 44,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 60,
+      "text": "someone threw up next to the sinks",
+      "has_image": false,
+      "true": {
+        "category": "biohazard",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "144",
+        "group": null
+      },
+      "pred": {
+        "category": "biohazard",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "biohazard",
+        "room": "144",
+        "location_method": "qr",
+        "confidence": 0.3
+      },
+      "baseline": {
+        "category": "biohazard",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "29f65331-9e0d-4311-84fd-3ec481dc3e51",
+      "merged": false,
+      "server_ms": 33,
+      "wall_ms": 88,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 61,
+      "text": "there's a used needle on the floor by the stairs",
+      "has_image": false,
+      "true": {
+        "category": "biohazard",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "LIB-EXT",
+        "group": null
+      },
+      "pred": {
+        "category": "biohazard",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "biohazard",
+        "room": "LIB-EXT",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "biohazard",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "d4b15101-39ef-41a5-93cf-1e86b83c5312",
+      "merged": false,
+      "server_ms": 34,
+      "wall_ms": 86,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 62,
+      "text": "brown water stain on the ceiling tile above the copier",
+      "has_image": false,
+      "true": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "133",
+        "group": null
+      },
+      "pred": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "133",
+        "location_method": "qr",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 2
+      },
+      "ticket_id": "dd693aa2-9094-4391-8cd9-d09c9a0cd67e",
+      "merged": false,
+      "server_ms": 37,
+      "wall_ms": 51,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 63,
+      "text": "a ceiling tile is missing in the corridor",
+      "has_image": false,
+      "true": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "215",
+        "group": null
+      },
+      "pred": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "215",
+        "location_method": "qr",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 2
+      },
+      "ticket_id": "a76ac9a9-4911-46fe-8661-782a16fa20e3",
+      "merged": false,
+      "server_ms": 36,
+      "wall_ms": 50,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 64,
+      "text": "the ceiling is sagging and looks like it's about to fall",
+      "has_image": false,
+      "true": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "309",
+        "group": "structural"
+      },
+      "pred": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "structural",
+        "room": "309",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 4
+      },
+      "ticket_id": "10107555-80c4-48b0-929f-b0978270aa21",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 87,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 65,
+      "text": "the carpet seam is coming up and people keep tripping",
+      "has_image": false,
+      "true": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 3,
+        "is_hazard": true,
+        "room": "249",
+        "group": "someone tripping"
+      },
+      "pred": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "slip_trip",
+        "room": "249",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 4
+      },
+      "ticket_id": "0b6f73de-5cb3-4f93-86e5-369ab13bc9f5",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 89,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 66,
+      "text": "loose floor tile near the elevator",
+      "has_image": false,
+      "true": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "148",
+        "group": null
+      },
+      "pred": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "148",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "ceiling_tile_damage",
+        "trade": "General",
+        "severity": 2
+      },
+      "ticket_id": "ffcc74c1-21e6-4313-9234-6d613f350b81",
+      "merged": false,
+      "server_ms": 33,
+      "wall_ms": 45,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 67,
+      "text": "there's a big hole in the walkway at the entrance",
+      "has_image": false,
+      "true": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 3,
+        "is_hazard": true,
+        "room": "ENGR-EXT",
+        "group": null
+      },
+      "pred": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "slip_trip",
+        "room": "ENGR-EXT",
+        "location_method": "qr",
+        "confidence": 0.3
+      },
+      "baseline": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 4
+      },
+      "ticket_id": "c9c5bd36-1321-45e3-97c2-7696eadce6b2",
+      "merged": false,
+      "server_ms": 32,
+      "wall_ms": 80,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 68,
+      "text": "black spots on the wall behind the toilet and it smells musty",
+      "has_image": false,
+      "true": {
+        "category": "mold_suspected",
+        "trade": "Safety/Environmental",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "325",
+        "group": null
+      },
+      "pred": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "325",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "toilet_malfunction",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "ab4f0d90-f7c5-4940-8d44-58b0eb082ba3",
+      "merged": false,
+      "server_ms": 38,
+      "wall_ms": 51,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 69,
+      "text": "smells really musty and the carpet is damp in the archives office",
+      "has_image": false,
+      "true": {
+        "category": "mold_suspected",
+        "trade": "Safety/Environmental",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "228",
+        "group": null
+      },
+      "pred": {
+        "category": "mold_suspected",
+        "trade": "Safety/Environmental",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "228",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "mold_suspected",
+        "trade": "Safety/Environmental",
+        "severity": 3
+      },
+      "ticket_id": "fc71bc31-cb18-489d-bc15-b6c711ef22be",
+      "merged": false,
+      "server_ms": 39,
+      "wall_ms": 53,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 70,
+      "text": "there's smoke coming out of the vent",
+      "has_image": false,
+      "true": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "343",
+        "group": null
+      },
+      "pred": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "fire_smoke",
+        "room": "343",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "bd55ff29-7afe-47bd-ac97-49fe42f78961",
+      "merged": false,
+      "server_ms": 42,
+      "wall_ms": 99,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 71,
+      "text": "burning smell in the machine shop",
+      "has_image": false,
+      "true": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "105",
+        "group": null
+      },
+      "pred": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "fire_smoke",
+        "room": "105",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "faf98179-7137-497a-886a-aa658a404219",
+      "merged": false,
+      "server_ms": 43,
+      "wall_ms": 103,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 72,
+      "text": "the smoke detector keeps chirping",
+      "has_image": false,
+      "true": {
+        "category": "other",
+        "trade": "General",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "207",
+        "group": "tricky: low battery is not a fire"
+      },
+      "pred": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "fire_smoke",
+        "room": "207",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "smoke_odor",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "ee425543-9a9e-45d8-9e76-26d79dbb2307",
+      "merged": false,
+      "server_ms": 47,
+      "wall_ms": 70,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 73,
+      "text": "chemical spill on the bench in the chem lab",
+      "has_image": false,
+      "true": {
+        "category": "chemical_spill",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "210",
+        "group": null
+      },
+      "pred": {
+        "category": "chemical_spill",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "chemical",
+        "room": "210",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "chemical_spill",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "1c267cf6-87c5-44aa-a3a2-dda545adb23d",
+      "merged": false,
+      "server_ms": 37,
+      "wall_ms": 94,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 74,
+      "text": "strong chemical fumes coming from the fume hood",
+      "has_image": false,
+      "true": {
+        "category": "chemical_spill",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "312",
+        "group": null
+      },
+      "pred": {
+        "category": "chemical_spill",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "chemical",
+        "room": "312",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "chemical_spill",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "a0dd84e3-ce97-4eb7-b4ef-b07582bc94ba",
+      "merged": false,
+      "server_ms": 45,
+      "wall_ms": 107,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 75,
+      "text": "elevator doors keep reopening and won't close",
+      "has_image": false,
+      "true": {
+        "category": "elevator_out",
+        "trade": "Elevator",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "148",
+        "group": null
+      },
+      "pred": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "148",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2
+      },
+      "ticket_id": "858ea091-9caf-4c46-a22a-9a7b8a649cb5",
+      "merged": false,
+      "server_ms": 39,
+      "wall_ms": 54,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 76,
+      "text": "projector shows no signal from the HDMI",
+      "has_image": false,
+      "true": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "252",
+        "group": null
+      },
+      "pred": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "252",
+        "location_method": "qr",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2
+      },
+      "ticket_id": "2324d5f4-d734-48ed-849b-16b39cee9643",
+      "merged": false,
+      "server_ms": 42,
+      "wall_ms": 56,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 77,
+      "text": "the microphone in the ballroom isn't working",
+      "has_image": false,
+      "true": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "240",
+        "group": null
+      },
+      "pred": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "240",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2
+      },
+      "ticket_id": "2bce4f1b-7582-4332-88e9-6e82d262d374",
+      "merged": false,
+      "server_ms": 37,
+      "wall_ms": 49,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 78,
+      "text": "wifi keeps dropping in the study commons",
+      "has_image": false,
+      "true": {
+        "category": "wifi_dead_zone",
+        "trade": "IT/AV",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "309",
+        "group": null
+      },
+      "pred": {
+        "category": "wifi_dead_zone",
+        "trade": "IT/AV",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "309",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "wifi_dead_zone",
+        "trade": "IT/AV",
+        "severity": 1
+      },
+      "ticket_id": "df1b050e-f43e-4e48-9b20-ded70cb95d63",
+      "merged": false,
+      "server_ms": 44,
+      "wall_ms": 63,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 79,
+      "text": "no internet in the group study rooms",
+      "has_image": false,
+      "true": {
+        "category": "wifi_dead_zone",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "223",
+        "group": null
+      },
+      "pred": {
+        "category": "wifi_dead_zone",
+        "trade": "IT/AV",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "223",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "wifi_dead_zone",
+        "trade": "IT/AV",
+        "severity": 1
+      },
+      "ticket_id": "cfb6cd12-0370-4c42-84e6-57b672ebe646",
+      "merged": false,
+      "server_ms": 39,
+      "wall_ms": 53,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 80,
+      "text": "steps at the library entrance are covered in ice",
+      "has_image": false,
+      "true": {
+        "category": "snow_ice",
+        "trade": "Grounds",
+        "severity": 3,
+        "is_hazard": true,
+        "room": "LIB-EXT",
+        "group": "icy steps"
+      },
+      "pred": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "slip_trip",
+        "room": "LIB-EXT",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "trip_hazard",
+        "trade": "General",
+        "severity": 4
+      },
+      "ticket_id": "cbfdc228-56a4-4e67-999c-157275a52f25",
+      "merged": false,
+      "server_ms": 42,
+      "wall_ms": 98,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 81,
+      "text": "a big branch fell across the walkway after the storm",
+      "has_image": false,
+      "true": {
+        "category": "tree_hazard",
+        "trade": "Grounds",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "ENGR-EXT",
+        "group": null
+      },
+      "pred": {
+        "category": "tree_hazard",
+        "trade": "Grounds",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "ENGR-EXT",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "tree_hazard",
+        "trade": "Grounds",
+        "severity": 3
+      },
+      "ticket_id": "6ad29fc6-2c82-44de-954d-ed7d389a3fac",
+      "merged": false,
+      "server_ms": 39,
+      "wall_ms": 51,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 82,
+      "text": "bushes are overgrown and blocking the sidewalk",
+      "has_image": false,
+      "true": {
+        "category": "tree_hazard",
+        "trade": "Grounds",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "LIB-EXT",
+        "group": null
+      },
+      "pred": {
+        "category": "tree_hazard",
+        "trade": "Grounds",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "LIB-EXT",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "tree_hazard",
+        "trade": "Grounds",
+        "severity": 3
+      },
+      "ticket_id": "242c23a3-3486-442f-bd2e-de18d49feda6",
+      "merged": false,
+      "server_ms": 35,
+      "wall_ms": 48,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 83,
+      "text": "someone slipped on the wet floor in the lobby",
+      "has_image": false,
+      "true": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 3,
+        "is_hazard": true,
+        "room": "142",
+        "group": "slip"
+      },
+      "pred": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "slip_trip",
+        "room": "142",
+        "location_method": "qr",
+        "confidence": 0.78
+      },
+      "baseline": {
+        "category": "spill",
+        "trade": "Custodial",
+        "severity": 4
+      },
+      "ticket_id": "6ab64004-0ec5-4547-995d-c38b5487251f",
+      "merged": false,
+      "server_ms": 32,
+      "wall_ms": 82,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 84,
+      "text": "water is dripping from the ceiling in the special collections room",
+      "has_image": false,
+      "true": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "320",
+        "group": null
+      },
+      "pred": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "320",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "88c7672c-9d73-43e8-95d7-94d6d6b388e2",
+      "merged": false,
+      "server_ms": 47,
+      "wall_ms": 62,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 85,
+      "text": "leak under the sink in the 2nd floor men's room of the library",
+      "has_image": false,
+      "true": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "225",
+        "group": null
+      },
+      "pred": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "225",
+        "location_method": "text",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "54c72afc-bd05-4358-bf1f-b2aacc342393",
+      "merged": false,
+      "server_ms": 62,
+      "wall_ms": 79,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 86,
+      "text": "the hand dryer doesn't work",
+      "has_image": false,
+      "true": {
+        "category": "other",
+        "trade": "General",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "111",
+        "group": null
+      },
+      "pred": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "111",
+        "location_method": "qr",
+        "confidence": 0.3
+      },
+      "baseline": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2
+      },
+      "ticket_id": "46d8283c-5e2a-461d-81f9-57299156bce3",
+      "merged": false,
+      "server_ms": 58,
+      "wall_ms": 74,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 87,
+      "text": "bulletin board is hanging off the wall",
+      "has_image": false,
+      "true": {
+        "category": "other",
+        "trade": "General",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "102",
+        "group": null
+      },
+      "pred": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "102",
+        "location_method": "qr",
+        "confidence": 0.3
+      },
+      "baseline": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2
+      },
+      "ticket_id": "2e2c0cc9-98bc-414a-82ac-bbd80af0d349",
+      "merged": false,
+      "server_ms": 55,
+      "wall_ms": 70,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 88,
+      "text": "there's a weird hissing noise coming from the gas line in the mechanical room",
+      "has_image": false,
+      "true": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "room": "352",
+        "group": null
+      },
+      "pred": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4,
+        "is_hazard": true,
+        "hazard_type": "gas",
+        "room": "352",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "gas_smell",
+        "trade": "Safety/Environmental",
+        "severity": 4
+      },
+      "ticket_id": "f43640ae-3988-4b11-b876-68b98a9b01ed",
+      "merged": false,
+      "server_ms": 55,
+      "wall_ms": 141,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 89,
+      "text": "shelf in the stacks is leaning and might tip over",
+      "has_image": false,
+      "true": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "333",
+        "group": null
+      },
+      "pred": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "333",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "broken_furniture",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 1
+      },
+      "ticket_id": "a1489526-38bd-4b3a-838c-ff946f0be72b",
+      "merged": false,
+      "server_ms": 51,
+      "wall_ms": 67,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 90,
+      "text": "the thermostat display is blank",
+      "has_image": false,
+      "true": {
+        "category": "too_cold",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "305",
+        "group": "ambiguous"
+      },
+      "pred": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "305",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2
+      },
+      "ticket_id": "7ed68f5f-2937-4134-beb6-569cdc6470c1",
+      "merged": false,
+      "server_ms": 52,
+      "wall_ms": 65,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 91,
+      "text": "lights in the loading dock are out",
+      "has_image": false,
+      "true": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "150",
+        "group": null
+      },
+      "pred": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "150",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "light_out",
+        "trade": "Electrical",
+        "severity": 1
+      },
+      "ticket_id": "9ecc4e03-e062-4f77-ae1d-7f51032dd265",
+      "merged": false,
+      "server_ms": 39,
+      "wall_ms": 53,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 92,
+      "text": "water fountain on the 2nd floor has really low pressure",
+      "has_image": false,
+      "true": {
+        "category": "fountain_broken",
+        "trade": "Plumbing",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "215",
+        "group": "G9"
+      },
+      "pred": {
+        "category": "fountain_broken",
+        "trade": "Plumbing",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "215",
+        "location_method": "qr",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "fountain_broken",
+        "trade": "Plumbing",
+        "severity": 1
+      },
+      "ticket_id": "8478e3cb-6e00-463d-931e-7c0ed8fad5b4",
+      "merged": true,
+      "server_ms": 45,
+      "wall_ms": 62,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": "same fountain"
+    },
+    {
+      "i": 93,
+      "text": "the game room TV won't turn on",
+      "has_image": false,
+      "true": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "247",
+        "group": null
+      },
+      "pred": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "247",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "projector_broken",
+        "trade": "IT/AV",
+        "severity": 2
+      },
+      "ticket_id": "87a214b4-2919-4143-8d63-3a0d6e246f60",
+      "merged": false,
+      "server_ms": 40,
+      "wall_ms": 54,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 94,
+      "text": "door handle came off in my hand",
+      "has_image": false,
+      "true": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "323",
+        "group": null
+      },
+      "pred": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "323",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "door_wont_close",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 2
+      },
+      "ticket_id": "a3e011e0-0ca3-4735-9dd5-575480071a88",
+      "merged": false,
+      "server_ms": 45,
+      "wall_ms": 60,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 95,
+      "text": "sink sprayer in the catering kitchen is leaking",
+      "has_image": false,
+      "true": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "349",
+        "group": null
+      },
+      "pred": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "349",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "leak_water",
+        "trade": "Plumbing",
+        "severity": 2
+      },
+      "ticket_id": "2b5d38c6-fb7b-4b21-98d1-7db397b66a44",
+      "merged": false,
+      "server_ms": 52,
+      "wall_ms": 68,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 96,
+      "text": "there's broken glass all over the floor from a shattered window",
+      "has_image": false,
+      "true": {
+        "category": "broken_window",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "room": "243",
+        "group": null
+      },
+      "pred": {
+        "category": "broken_window",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "243",
+        "location_method": "qr",
+        "confidence": 0.86
+      },
+      "baseline": {
+        "category": "broken_window",
+        "trade": "Carpentry/Doors & Locks",
+        "severity": 3
+      },
+      "ticket_id": "397d09d8-002c-49c6-9b14-cf0856396e82",
+      "merged": false,
+      "server_ms": 48,
+      "wall_ms": 64,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 97,
+      "text": "the restroom is out of soap and the trash is overflowing",
+      "has_image": false,
+      "true": {
+        "category": "supplies_empty",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "room": "345",
+        "group": "multi-issue"
+      },
+      "pred": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "345",
+        "location_method": "qr",
+        "confidence": 0.62
+      },
+      "baseline": {
+        "category": "trash_overflow",
+        "trade": "Custodial",
+        "severity": 1
+      },
+      "ticket_id": "6d89de82-cdd4-4834-b0c4-379c90dc83f4",
+      "merged": false,
+      "server_ms": 48,
+      "wall_ms": 61,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    },
+    {
+      "i": 98,
+      "text": "can someone look at the noise in the server room AC",
+      "has_image": false,
+      "true": {
+        "category": "hvac_noise",
+        "trade": "HVAC",
+        "severity": 2,
+        "is_hazard": false,
+        "room": "330",
+        "group": null
+      },
+      "pred": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2,
+        "is_hazard": false,
+        "hazard_type": null,
+        "room": "330",
+        "location_method": "qr",
+        "confidence": 0.3
+      },
+      "baseline": {
+        "category": "other",
+        "trade": "General",
+        "severity": 2
+      },
+      "ticket_id": "59de0dea-bdc8-4de9-a177-0a4a17b4d264",
+      "merged": true,
+      "server_ms": 39,
+      "wall_ms": 53,
+      "cost_usd": 0.0,
+      "llm_mode": "mock",
+      "notes": ""
+    }
+  ],
+  "duration_s": 6.0
+}

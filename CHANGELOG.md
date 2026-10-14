@@ -64,3 +64,16 @@
   max 6 tool calls / 30 s; deterministic mock intents offline.
 - Tests: clustering, dismissal/confirmation, brief citations + history, KPIs, mock agent intents, live agent loop with
   a stubbed client and tool-call cap; Playwright: dashboard cluster + assistant, SOP-cited brief.
+
+## Phase 5: Evaluation and polish
+- Eval set (98 labelled items: every trade, 19 hazards, tricky non-hazards, QR/text/no location, 9 duplicate groups)
+  and `run_eval.py`: real pipeline on an isolated DB; category/trade/severity (exact, ±1), hazard recall/precision,
+  location (with and without QR), pairwise dedupe P/R/F1, latency p50/p95, cost/report, trade confusion matrix,
+  keyword baseline; JSON + markdown; non-zero exit if hazard recall < 100%. Mock run: hazard recall 100%,
+  dedupe F1 97.1%, keyword-baseline category accuracy 85.7%.
+- `/eval` page for judges (mock runs clearly labelled), `/baseline` 14-field legacy form with timer, study mode
+  so only volunteer runs count as time-to-report measurements, printable `/admin/qr` sticker sheet.
+- Accessibility: axe-core checks on 8 pages in light and dark (no serious/critical violations); status filter as
+  toggle buttons; 404 and error pages.
+- Hazard rules extended for natural phrasings found while labelling ("people keep tripping", "covered in ice",
+  "hole in the walkway", hissing near a gas line).

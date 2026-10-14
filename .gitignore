@@ -25,9 +25,7 @@ backend/data/
 *.db
 *.sqlite
 
-# eval outputs (keep the folder, commit summaries deliberately)
-eval/results/*.json
-!eval/results/.gitkeep
+# eval outputs are committed on purpose so /eval has data on a fresh clone
 
 # misc
 .DS_Store

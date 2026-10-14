@@ -66,6 +66,7 @@ def test_every_hazard_keyword_triggers(hazard_type, phrase):
     "smoke coming out of the vent",
     "SMOKING outlet behind the desk",
     "I SMELL GAS near room 210",
+    "weird hissing noise coming from the gas line",
 ])
 def test_hazard_regexes_trigger(text):
     assert rule_hazards(text)
@@ -82,6 +83,8 @@ def test_hazard_regexes_trigger(text):
     "trash overflowing by the elevator",
     "door closer is broken",
     "wifi is dead in the study room",
+    "the breaker keeps tripping in the lab",
+    "the gas station across the street",
 ])
 def test_benign_texts_do_not_trigger(text):
     assert rule_hazards(text) == []

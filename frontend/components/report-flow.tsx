@@ -72,11 +72,14 @@ export function ReportFlow({ qrCode }: { qrCode?: string }) {
   const [taxonomy, setTaxonomy] = useState<Taxonomy | null>(null);
   const [result, setResult] = useState<ConfirmResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [study, setStudy] = useState<string | null>(null);
   const voice = useVoice((t) => setText((prev) => (prev ? `${prev} ${t}` : t)));
 
   useEffect(() => {
     startedAt.current = performance.now();
     api<Taxonomy>("/api/taxonomy").then(setTaxonomy).catch(() => undefined);
+    // ?study=<label> marks a time-to-report study run (linked from the legacy-form page); only those are recorded.
+    setStudy(new URLSearchParams(window.location.search).get("study"));
   }, []);
 
   useEffect(() => {
@@ -174,6 +177,8 @@ export function ReportFlow({ qrCode }: { qrCode?: string }) {
           edits,
           location_id: location?.id ?? null,
           client_elapsed_ms: Math.round(performance.now() - startedAt.current),
+          study: study !== null,
+          participant: study || null,
         }),
       );
       setResult(res);
@@ -213,6 +218,12 @@ export function ReportFlow({ qrCode }: { qrCode?: string }) {
           <CircleAlert className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           {error}
         </div>
+      )}
+
+      {study !== null && phase !== "done" && (
+        <p className="mb-4 flex items-center gap-2 rounded-lg border border-p3/40 bg-card px-3 py-2 text-sm">
+          <Timer className="size-4 text-p3" aria-hidden="true" /> Timing study{study ? `: ${study}` : ""}. Your time is being measured.
+        </p>
       )}
 
       {phase === "compose" && (

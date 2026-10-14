@@ -254,7 +254,7 @@ export default function DashboardPage() {
                         b.code === building ? "border-primary bg-primary text-primary-foreground" : "hover:bg-accent",
                       )}
                     >
-                      {b.name} <span className="opacity-80">({b.open_total}{b.hazards ? `, ${b.hazards} hazard` : ""})</span>
+                      {b.name} <span>({b.open_total}{b.hazards ? `, ${b.hazards} hazard` : ""})</span>
                     </button>
                   ))}
                 </div>

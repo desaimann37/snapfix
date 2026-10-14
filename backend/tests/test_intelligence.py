@@ -178,3 +178,21 @@ def test_live_agent_caps_tool_calls(module_seed, db, monkeypatch):
     monkeypatch.setattr(llm, "create", forever)
     reply = agent_mod.chat(db, "loop please")
     assert len(reply.tool_calls) == agent_mod.MAX_TOOL_CALLS
+
+
+def test_eval_api_and_timing(module_seed, client, tmp_path, monkeypatch):
+    import json
+
+    from app.config import get_settings
+
+    monkeypatch.setattr(get_settings(), "eval_results_dir", str(tmp_path))
+    assert client.get("/api/eval/latest").json()["result"] is None
+    (tmp_path / "20260101-000000.json").write_text(json.dumps({
+        "run_id": "20260101-000000", "mode": "mock", "timestamp": "2026-01-01T00:00:00Z", "n_items": 1,
+        "metrics": {"category_accuracy": 1.0, "hazard_recall": 1.0}}))
+    body = client.get("/api/eval/latest").json()
+    assert body["result"]["run_id"] == "20260101-000000" and body["runs"] == 1
+    client.post("/api/eval/timing", json={"flow": "baseline", "seconds": 180, "participant": "v1"})
+    t = client.post("/api/eval/timing", json={"flow": "snapfix", "seconds": 15}).json()["timing"]
+    assert t["baseline"]["median_s"] == 180 and t["snapfix"]["n"] >= 1 and t["speedup"]
+    assert client.post("/api/eval/timing", json={"flow": "other", "seconds": 1}).status_code == 422

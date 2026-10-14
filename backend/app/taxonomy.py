@@ -245,7 +245,7 @@ HAZARD_KEYWORDS: dict[str, list[str]] = {
     "gas": [
         "smell gas", "smells like gas", "smelled gas", "smelling gas", "gas smell", "gas odor",
         "gas odour", "gas leak", "leaking gas", "rotten egg smell", "rotten eggs", "natural gas",
-        "propane smell", "hissing gas",
+        "propane smell", "hissing gas", "smell of gas",
     ],
     "electrical": [
         "sparking", "sparks", "sparked", "exposed wire", "exposed wires", "exposed wiring", "live wire",
@@ -270,8 +270,9 @@ HAZARD_KEYWORDS: dict[str, list[str]] = {
     "slip_trip": [
         "slipped", "slippery", "someone fell", "person fell", "fell down", "tripped", "trip hazard",
         "tripping hazard", "black ice", "icy sidewalk", "icy steps", "icy walkway", "ice on the stairs",
-        "ice on the steps", "broken step", "broken stair", "loose railing", "hole in the floor",
-        "open manhole",
+        "ice on the steps", "covered in ice", "covered with ice", "broken step", "broken stair", "loose railing",
+        "hole in the floor", "hole in the walkway", "hole in the sidewalk", "open manhole", "tripping over",
+        "people keep tripping", "people are tripping",
     ],
     "biohazard": [
         "blood", "bloody", "vomit", "vomited", "threw up", "throw up", "needle", "needles", "syringe",
@@ -286,6 +287,7 @@ HAZARD_KEYWORDS: dict[str, list[str]] = {
 
 # Hand-written regexes for words that need exclusions ("fire door", "smoke detector" are not hazards).
 HAZARD_REGEXES: dict[str, list[str]] = {
+    "gas": [r"\bhiss\w*\b.{0,40}\bgas\b", r"\bgas\b.{0,40}\bhiss\w*"],
     "fire_smoke": [
         r"\bfire\b(?!\s+(?:extinguisher|door|doors|exit|drill|escape|hydrant|lane|marshal|pit))",
         r"\bsmok(?:e|ing)\b(?!\s+(?:detector|detectors))",

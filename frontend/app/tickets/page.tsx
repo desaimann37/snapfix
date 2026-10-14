@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input, Select } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LiveIndicator } from "@/components/live-indicator";
 import {
   HazardBadge,
@@ -110,13 +109,22 @@ export default function TicketQueuePage() {
       )}
 
       <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-center">
-        <Tabs value={tab} onValueChange={(v) => setTab(v as StatusTab)}>
-          <TabsList>
-            <TabsTrigger value="open">Open</TabsTrigger>
-            <TabsTrigger value="resolved,closed">Resolved</TabsTrigger>
-            <TabsTrigger value="all">All</TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <div role="group" aria-label="Status filter" className="inline-flex h-9 items-center rounded-lg bg-muted p-1 text-muted-foreground">
+          {([["open", "Open"], ["resolved,closed", "Resolved"], ["all", "All"]] as const).map(([value, label]) => (
+            <button
+              key={value}
+              type="button"
+              aria-pressed={tab === value}
+              onClick={() => setTab(value)}
+              className={cn(
+                "rounded-md px-3 py-1 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                tab === value && "bg-card text-foreground shadow",
+              )}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
         <div className="relative flex-1">
           <Search className="pointer-events-none absolute left-2.5 top-2.5 size-4 text-muted-foreground" aria-hidden="true" />
           <Input

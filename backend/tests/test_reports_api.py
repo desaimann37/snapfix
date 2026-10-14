@@ -59,6 +59,17 @@ def test_report_at_repeat_sink_merges_into_open_ticket(reseed, client):
     assert out["ticket"]["asset"]["tag"] == "LIB-225-SINK-1"
 
 
+def test_only_study_runs_are_recorded_as_timing(reseed, client):
+    before = client.get("/api/eval/latest").json()["timing"]["snapfix"]["n"]
+    body = submit(client, text="chair is broken", location_code="engr-101").json()
+    client.post(f"/api/reports/{body['report_id']}/confirm", json={"client_elapsed_ms": 9000})
+    assert client.get("/api/eval/latest").json()["timing"]["snapfix"]["n"] == before
+    body = submit(client, text="table is wobbly", location_code="engr-102").json()
+    client.post(f"/api/reports/{body['report_id']}/confirm",
+                json={"client_elapsed_ms": 12000, "study": True, "participant": "Volunteer 1"})
+    assert client.get("/api/eval/latest").json()["timing"]["snapfix"]["n"] == before + 1
+
+
 def test_qr_route_resolves_location(client, seeded):
     body = submit(client, text="chair is broken", location_code="engr-101").json()
     assert body["location"]["qr_code"] == "engr-101" and body["location_method"] == "qr"

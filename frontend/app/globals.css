@@ -40,6 +40,12 @@
     --chart-grid: #e1e0d9;
     --chart-axis: #898781;
     --chart-surface: #ffffff;
+    /* sequential blue ramp for magnitude (heatmap), light->dark; --heat-ink-N = legible text on that step */
+    --heat-1: #cde2fb; --heat-ink-1: #0b0b0b;
+    --heat-2: #9ec5f4; --heat-ink-2: #0b0b0b;
+    --heat-3: #5598e7; --heat-ink-3: #0b0b0b;
+    --heat-4: #256abf; --heat-ink-4: #ffffff;
+    --heat-5: #184f95; --heat-ink-5: #ffffff;
   }
 
   .dark {
@@ -77,6 +83,12 @@
     --chart-grid: #263041;
     --chart-axis: #8f96a3;
     --chart-surface: #0f1624;
+    /* dark steps: low values recede toward the dark surface, high values get lighter */
+    --heat-1: #104281; --heat-ink-1: #ffffff;
+    --heat-2: #1c5cab; --heat-ink-2: #ffffff;
+    --heat-3: #2a78d6; --heat-ink-3: #ffffff;
+    --heat-4: #6da7ec; --heat-ink-4: #0b0b0b;
+    --heat-5: #b7d3f6; --heat-ink-5: #0b0b0b;
   }
 
   * {

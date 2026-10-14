@@ -544,9 +544,9 @@ def confirm(db: Session, report_id: uuid.UUID, body: ConfirmIn) -> ConfirmResult
         report.input_tokens += dedupe.usage.input_tokens + dedupe.usage.cache_read_tokens
         report.output_tokens += dedupe.usage.output_tokens
         report.cost_usd = round(report.cost_usd + dedupe.usage.cost_usd, 6)
-        if body.client_elapsed_ms:
+        if body.study and body.client_elapsed_ms:
             db.add(TimingRun(flow="snapfix", seconds=round(body.client_elapsed_ms / 1000, 2),
-                             notes=f"{ticket.short_code} via /report"))
+                             participant=body.participant, notes=f"{ticket.short_code} via /report (study)"))
         db.commit()
 
     publish(db, "ticket.merged" if merged else "ticket.created", ticket.id, report_count=ticket.report_count)

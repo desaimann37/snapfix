@@ -18,7 +18,7 @@ from app.config import get_settings
 from app.db import SessionLocal
 from app.events import broker
 from app.logging_setup import setup_logging
-from app.routers import admin, agent, clusters, dashboard, locations, meta, reports, sse, tickets
+from app.routers import admin, agent, clusters, dashboard, eval, locations, meta, reports, sse, tickets
 from app.runtime import effective_llm_mode
 
 log = logging.getLogger("snapfix")
@@ -82,6 +82,7 @@ app.include_router(meta.router)
 app.include_router(clusters.router)
 app.include_router(dashboard.router)
 app.include_router(agent.router)
+app.include_router(eval.router)
 
 
 @app.get("/api/health", tags=["meta"])

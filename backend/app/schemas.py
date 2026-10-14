@@ -202,6 +202,9 @@ class ConfirmIn(BaseModel):
     edits: DraftEdits = DraftEdits()
     location_id: Optional[uuid.UUID] = None
     client_elapsed_ms: Optional[int] = Field(default=None, ge=0, le=3_600_000)
+    # Time-to-report study (legacy form vs SnapFix): only explicit study runs are recorded as measurements.
+    study: bool = False
+    participant: Optional[str] = Field(default=None, max_length=80)
 
 
 class ConfirmOut(BaseModel):

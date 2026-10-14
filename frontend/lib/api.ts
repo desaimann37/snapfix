@@ -301,3 +301,52 @@ export interface AgentReply {
   mode: string;
   latency_ms: number;
 }
+
+// ---- evaluation -----------------------------------------------------------------------------------
+export interface EvalItem {
+  i: number;
+  text: string;
+  true: { category: string; trade: string; severity: number; is_hazard: boolean; room: string | null; group: string | null };
+  pred: { category: string; trade: string; severity: number; is_hazard: boolean; room: string | null; confidence: number };
+  merged: boolean;
+  notes: string;
+}
+
+export interface EvalResult {
+  run_id: string;
+  timestamp: string;
+  mode: string;
+  note: string;
+  models: { main: string; fast: string };
+  prompt_version: string;
+  embedder: string;
+  n_items: number;
+  n_with_photo: number;
+  metrics: {
+    category_accuracy: number | null;
+    trade_accuracy: number | null;
+    severity_exact: number | null;
+    severity_within_1: number | null;
+    hazard_recall: number | null;
+    hazard_precision: number | null;
+    hazard_counts: { tp: number; fn: number; fp: number };
+    location_accuracy: number | null;
+    location_items: number;
+    location_accuracy_without_qr: number | null;
+    location_items_without_qr: number;
+    dedupe_precision: number | null;
+    dedupe_recall: number | null;
+    dedupe_f1: number | null;
+    latency_ms: { p50: number | null; p95: number | null; mean: number | null };
+    cost_per_report_usd: number | null;
+  };
+  baseline: { name: string; category_accuracy: number | null; trade_accuracy: number | null; severity_exact: number | null; severity_within_1: number | null };
+  confusion_trade: { labels: string[]; matrix: number[][] };
+  items: EvalItem[];
+}
+
+export interface TimingStats {
+  baseline: { n: number; median_s: number | null; min_s: number | null; max_s: number | null };
+  snapfix: { n: number; median_s: number | null; min_s: number | null; max_s: number | null };
+  speedup: number | null;
+}
