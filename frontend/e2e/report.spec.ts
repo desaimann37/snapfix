@@ -30,6 +30,9 @@ test("queue pins open hazards to the top", async ({ page }) => {
 });
 
 test("new tickets and hazard alerts appear live (SSE) without reloading", async ({ page, request }) => {
+  // Start from the demo state so the gas report creates a NEW hazard (a merge into an existing one doesn't re-alert).
+  const token = process.env.ADMIN_TOKEN || "change-me";
+  expect((await request.post("/api/admin/demo-reset", { headers: { "X-Admin-Token": token }, timeout: 120_000 })).ok()).toBeTruthy();
   await page.goto("/tickets");
   await expect(page.getByRole("status").filter({ hasText: "Live" })).toBeVisible({ timeout: 15_000 });
 
@@ -56,7 +59,7 @@ test("manager dashboard shows the root-cause cluster and the assistant answers",
 test("ticket detail shows an SOP-cited technician brief", async ({ page, request }) => {
   const found = await (await request.get("/api/tickets?q=Faucet%20leaking%20again")).json();
   await page.goto(`/tickets/${found.items[0].short_code}`);
-  await expect(page.getByText("Technician brief")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Technician brief" })).toBeVisible();
   await expect(page.getByText(/Faucet Cartridge Replacement §4/).first()).toBeVisible({ timeout: 30_000 });
   await expect(page.getByText(/repeat failure/i).first()).toBeVisible();
 });
