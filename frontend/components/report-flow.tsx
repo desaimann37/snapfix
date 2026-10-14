@@ -494,6 +494,30 @@ export function ReportFlow({ qrCode }: { qrCode?: string }) {
 
           {result.hazard.is_hazard && <SafetyBanner text={result.hazard.safety_text} label={result.hazard.label} alerted />}
 
+          {!result.ticket.location && intake && (
+            <Card>
+              <CardContent className="space-y-2 pt-5">
+                <p className="font-semibold">Help responders find it</p>
+                <p className="text-sm text-muted-foreground">Only if it&apos;s safe: where is this?</p>
+                <LocationPicker
+                  value={null}
+                  onChange={async (loc) => {
+                    try {
+                      const res = await api<ConfirmResponse>(
+                        `/api/reports/${intake.report_id}/confirm`,
+                        jsonBody({ location_id: loc.id }),
+                      );
+                      setResult((r) => (r ? { ...r, ticket: res.ticket } : r));
+                    } catch {
+                      setError("Couldn't save the location. Responders were still alerted.");
+                    }
+                  }}
+                  candidates={intake.location_candidates}
+                />
+              </CardContent>
+            </Card>
+          )}
+
           <Card>
             <CardContent className="space-y-3 pt-5">
               <div className="flex items-center justify-between gap-2">

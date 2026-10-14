@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Priority, Status } from "@/lib/api";
-import { PRIORITY_LABEL, STATUS_LABEL, slaState, titleCase } from "@/lib/format";
+import { HAZARD_LABEL, PRIORITY_LABEL, STATUS_LABEL, slaState, titleCase } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const PRIORITY_STYLE: Record<Priority, string> = {
@@ -67,7 +67,7 @@ export function HazardBadge({ hazardType, className }: { hazardType?: string | n
   return (
     <Badge variant="hazard" className={cn("uppercase tracking-wide", className)}>
       <TriangleAlert aria-hidden="true" />
-      Hazard{hazardType ? ` · ${titleCase(hazardType)}` : ""}
+      Hazard{hazardType ? ` · ${HAZARD_LABEL[hazardType] ?? titleCase(hazardType)}` : ""}
     </Badge>
   );
 }

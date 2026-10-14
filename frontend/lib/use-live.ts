@@ -16,6 +16,8 @@ export interface LiveEvent<T = Record<string, unknown>> {
   receivedAt: number;
 }
 
+type ConnState = "connecting" | "live" | "offline";
+
 const EVENTS: LiveEventName[] = [
   "ticket.created",
   "ticket.merged",
@@ -25,34 +27,64 @@ const EVENTS: LiveEventName[] = [
   "brief.generated",
 ];
 
+// One EventSource per tab, shared by every component that subscribes (browsers limit connections per host).
+let source: EventSource | null = null;
+let state: ConnState = "connecting";
+const listeners = new Set<(e: LiveEvent) => void>();
+const stateListeners = new Set<(s: ConnState) => void>();
+
+function setState(s: ConnState) {
+  state = s;
+  stateListeners.forEach((fn) => fn(s));
+}
+
+function ensureSource() {
+  if (source || typeof window === "undefined") return;
+  const es = new EventSource(process.env.NEXT_PUBLIC_STREAM_URL || "/api/stream");
+  source = es;
+  es.addEventListener("hello", () => setState("live"));
+  es.onopen = () => setState("live");
+  es.onerror = () => setState(es.readyState === EventSource.CLOSED ? "offline" : "connecting");
+  for (const name of EVENTS) {
+    es.addEventListener(name, (msg) => {
+      let data: Record<string, unknown>;
+      try {
+        data = JSON.parse((msg as MessageEvent).data);
+      } catch {
+        return;
+      }
+      const evt: LiveEvent = { event: name, data, receivedAt: Date.now() };
+      listeners.forEach((fn) => fn(evt));
+    });
+  }
+}
+
+function releaseSource() {
+  if (source && listeners.size === 0 && stateListeners.size === 0) {
+    source.close();
+    source = null;
+    state = "connecting";
+  }
+}
+
 /** Subscribe to the backend SSE stream. Reconnects automatically (EventSource retry). */
-export function useLiveEvents(onEvent: (e: LiveEvent) => void): "connecting" | "live" | "offline" {
-  const [state, setState] = useState<"connecting" | "live" | "offline">("connecting");
+export function useLiveEvents(onEvent: (e: LiveEvent) => void): ConnState {
+  const [conn, setConn] = useState<ConnState>(state);
   const handler = useRef(onEvent);
   handler.current = onEvent;
 
   useEffect(() => {
-    const url = process.env.NEXT_PUBLIC_STREAM_URL || "/api/stream";
-    const es = new EventSource(url);
-    es.addEventListener("hello", () => setState("live"));
-    es.onopen = () => setState("live");
-    es.onerror = () => setState(es.readyState === EventSource.CLOSED ? "offline" : "connecting");
-    const listeners = EVENTS.map((name) => {
-      const fn = (msg: MessageEvent) => {
-        try {
-          handler.current({ event: name, data: JSON.parse(msg.data), receivedAt: Date.now() });
-        } catch {
-          /* ignore malformed */
-        }
-      };
-      es.addEventListener(name, fn as EventListener);
-      return [name, fn] as const;
-    });
+    const fn = (e: LiveEvent) => handler.current(e);
+    listeners.add(fn);
+    stateListeners.add(setConn);
+    ensureSource();
+    setConn(state);
     return () => {
-      listeners.forEach(([name, fn]) => es.removeEventListener(name, fn as EventListener));
-      es.close();
+      listeners.delete(fn);
+      stateListeners.delete(setConn);
+      releaseSource();
     };
   }, []);
 
-  return state;
+  return conn;
 }

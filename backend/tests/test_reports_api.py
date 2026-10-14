@@ -24,13 +24,13 @@ def submit(client, *, text="", image: bytes | None = None, **form):
 
 
 def test_photo_and_text_to_plumbing_ticket(reseed, client):
-    r = submit(client, text="the sink in the 2nd floor men's room of the library keeps dripping",
+    r = submit(client, text="the sink in the 1st floor women's restroom in engineering keeps dripping",
                image=jpeg_bytes())
     assert r.status_code == 200, r.text
     body = r.json()
     assert body["llm_mode"] == "mock"
     assert body["draft"]["category"] == "leak_water" and body["draft"]["trade"] == "Plumbing"
-    assert body["location"]["room"] == "225" and body["location_method"] == "text"
+    assert body["location"]["room"] == "111" and body["location_method"] == "text"
     assert body["needs_confirmation"] is False
     assert body["photo_url"].startswith("/media/") and body["analysis_ms"] >= 0
 
@@ -39,7 +39,7 @@ def test_photo_and_text_to_plumbing_ticket(reseed, client):
     out = c.json()
     t = out["ticket"]
     assert t["trade"] == "Plumbing" and t["team"]["name"] == "Plumbing Shop"
-    assert t["location"]["room"] == "225" and t["status"] == "triaged"
+    assert t["location"]["room"] == "111" and t["status"] == "triaged"
     assert t["asset"] is not None and t["asset"]["type"] == "sink"
     assert out["photo_to_ticket_ms"] >= 0 and out["client_elapsed_ms"] == 14200
 
@@ -47,6 +47,16 @@ def test_photo_and_text_to_plumbing_ticket(reseed, client):
     assert [e["type"] for e in detail["events"]][:2] == ["created", "assigned"]
     assert detail["reports"][0]["photo_url"] == body["photo_url"]
     assert client.get(body["photo_url"]).status_code == 200
+
+
+def test_report_at_repeat_sink_merges_into_open_ticket(reseed, client):
+    """The planted repeat-failure sink already has an open leak ticket: a new report merges into it."""
+    body = submit(client, text="the sink in the 2nd floor men's room of the library keeps dripping",
+                  image=jpeg_bytes()).json()
+    out = client.post(f"/api/reports/{body['report_id']}/confirm", json={}).json()
+    assert out["merged"] is True and out["report_count"] == 3
+    assert "Already reported" in out["message"] and "3 people" in out["message"]
+    assert out["ticket"]["asset"]["tag"] == "LIB-225-SINK-1"
 
 
 def test_qr_route_resolves_location(client, seeded):

@@ -116,7 +116,7 @@ def mock_extract(text: str, has_image: bool) -> TicketDraft:
             clarifying_question="What's the problem you'd like to report?", confidence=0.3, image_relevant=True)
 
     confidence = {0: 0.3, 1: 0.62}.get(score, 0.78 if score == 2 else 0.86)
-    summary = f'Reporter says: "{clean}".' if clean else "No description provided."
+    summary = (clean[0].upper() + clean[1:]).rstrip(".!? ") + "." if clean else "No description provided."
     if has_image:
         summary += " Photo attached."
     return TicketDraft(

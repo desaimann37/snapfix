@@ -56,6 +56,7 @@ class Settings(BaseSettings):
     emergency_text: str = "If you smell gas or see fire/smoke, leave the area and call 911."
     max_upload_mb: int = 10
     scheduler_enabled: bool = True
+    background_jobs: bool = True  # alerts + AI enrichment off the request thread (tests run them inline)
     cluster_interval_s: int = 120
     log_level: str = "INFO"
 

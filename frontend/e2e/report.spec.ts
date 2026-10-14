@@ -28,3 +28,18 @@ test("queue pins open hazards to the top", async ({ page }) => {
   const firstRow = page.locator("tbody tr").first();
   await expect(firstRow.getByText(/Hazard/i)).toBeVisible({ timeout: 15_000 });
 });
+
+test("new tickets and hazard alerts appear live (SSE) without reloading", async ({ page, request }) => {
+  await page.goto("/tickets");
+  await expect(page.getByRole("status").filter({ hasText: "Live" })).toBeVisible({ timeout: 15_000 });
+
+  const unique = `Wobbly table in the game room ${Date.now()}`;
+  const intake = await (await request.post("/api/reports", { multipart: { text: unique, location_code: "stuc-247" } })).json();
+  const done = await (await request.post(`/api/reports/${intake.report_id}/confirm`, { data: {} })).json();
+  await expect(page.getByText(done.ticket.short_code)).toBeVisible({ timeout: 5_000 });
+
+  const gas = await (await request.post("/api/reports", { multipart: { text: "I smell gas near room 210" } })).json();
+  const bar = page.getByRole("region", { name: "Hazard alerts" });
+  await expect(bar.getByText(/P1 hazard/i)).toBeVisible({ timeout: 3_000 });
+  await expect(bar.getByText(gas.ticket.short_code)).toBeVisible();
+});

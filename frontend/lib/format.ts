@@ -62,3 +62,14 @@ export function locationLine(loc: { building_name: string; label: string; room: 
   const room = /^\d/.test(loc.room) ? ` (${loc.room})` : "";
   return `${loc.building_name} · ${loc.label}${room}`;
 }
+
+export const HAZARD_LABEL: Record<string, string> = {
+  gas: "Gas",
+  electrical: "Electrical",
+  water_intrusion: "Water intrusion",
+  fire_smoke: "Fire / smoke",
+  structural: "Structural",
+  slip_trip: "Slip / trip",
+  biohazard: "Biohazard",
+  chemical: "Chemical",
+};

@@ -31,3 +31,21 @@
 - Tests: extraction (mock + stubbed live request shape + refusal fallback), location parsing/resolution,
   report API (EXIF stripping, size/type limits, edits, idempotency); Playwright smoke test (QR report ->
   ticket in queue; hazards pinned).
+
+## Phase 3: Hazards, dedupe, routing, realtime
+- Hazard fast path: deterministic keyword rules create (or merge into) a P1 ticket and alert on-call before any
+  LLM call (measured ~180 ms round trip for "I smell gas in room 210"); AI enrichment runs afterwards and can
+  add details but never remove the hazard. Reporters see safety instructions; they can add the location later.
+- Notifier: console (default), Slack webhook, Twilio SMS; sent off the request thread; outcome recorded as a
+  `notified` event; failures fall back to console.
+- Duplicate detection: bge-small + pgvector KNN over open tickets in the same building (72 h), score =
+  0.55 text + 0.25 location + 0.20 category, Claude Haiku 5.5 confirmation in the 0.60–0.80 band (and for strong
+  matches in other rooms). Merges attach the report, bump report_count, re-evaluate severity/priority upward only.
+- Per-building advisory lock (Postgres) so simultaneous reports of the same issue can't create two tickets
+  (verified: 4 concurrent identical reports -> 1 ticket with 4 reports).
+- SSE: ticket.created / ticket.merged / ticket.updated / hazard.alert published after commit; one shared
+  EventSource per tab; global red hazard bar on dispatcher/manager pages.
+- Ticket detail page: photo gallery, reports, floor-plan location, asset history, status/assignee controls, and the
+  AI decision log (classification, dedupe score table, routing rationale, escalation, notifications).
+- Tests: dedupe scoring/thresholds, 3 reports -> 1 ticket, severity never decreases, hazard fast path with the LLM
+  down, merge without re-alert, routing table, Slack/Twilio payloads; Playwright: live queue + hazard bar via SSE.

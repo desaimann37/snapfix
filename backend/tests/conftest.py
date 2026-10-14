@@ -10,6 +10,7 @@ os.environ.update({
     "LLM_MODE": "mock",
     "ANTHROPIC_API_KEY": "",
     "SCHEDULER_ENABLED": "false",
+    "BACKGROUND_JOBS": "false",
     "NOTIFIER": "console",
     "ADMIN_TOKEN": "test-token",
     "STT_FALLBACK": "none",

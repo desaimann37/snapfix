@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Camera, FlaskConical, LayoutDashboard, ListTodo, QrCode, Timer, Wrench } from "lucide-react";
 import { ThemeToggle } from "@/components/theme";
+import { HazardAlertBar } from "@/components/hazard-alert-bar";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -66,6 +67,7 @@ export function SiteHeader() {
         </nav>
         <ThemeToggle />
       </div>
+      <HazardAlertBar />
     </header>
   );
 }
