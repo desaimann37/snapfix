@@ -50,8 +50,10 @@ eval-mock:
 db:
 	$(COMPOSE) up -d --wait db
 
+# Local runs talk to the dockerized Postgres on localhost (overrides the in-compose db hostname from .env).
+backend: export DATABASE_URL = postgresql+psycopg://snapfix:snapfix@localhost:5432/snapfix
 backend:
-	cd backend && uv run alembic upgrade head && uv run uvicorn app.main:app --reload --port 8000
+	cd backend && uv run alembic upgrade head && uv run python -m app.seed.generate --if-empty && uv run uvicorn app.main:app --reload --port 8000
 
 frontend:
-	cd frontend && npm run dev
+	cd frontend && npm install && npm run dev
