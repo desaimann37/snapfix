@@ -41,8 +41,8 @@ services:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health', timeout=3)"]
       interval: 5s
       timeout: 5s
-      retries: 40
-      start_period: 10s
+      retries: 60
+      start_period: 30s
 
   frontend:
     restart: unless-stopped

@@ -19,4 +19,5 @@ ENV HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 
 COPY . .
 EXPOSE 8000
-CMD ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers"]
+# Migrate, seed the demo data on first start only, then serve.
+CMD ["sh", "-c", "alembic upgrade head && python -m app.seed.generate --if-empty && uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers"]

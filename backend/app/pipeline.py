@@ -416,7 +416,7 @@ def _hazard_fast_path(db: Session, *, report: Report, rule_hits, combined: str, 
     log.info("hazard fast path", extra={"ticket": ticket.short_code, "merged": merged, "hazard": hazard.hazard_type,
                                         **report.stage_timings})
     message = merged_message(ticket, image_jpeg is not None) if merged else (
-        f"Emergency alert sent: {ticket.short_code} is a P1 for {ticket.team.name if ticket.team else ticket.trade}.")
+        f"{ticket.short_code} is a P1 for {ticket.team.name if ticket.team else ticket.trade}. On-call has been alerted.")
     return IntakeResult(report=report, draft=draft, extraction=extraction, resolution=resolution, hazard=hazard,
                         needs_confirmation=False, reasons=[], timings=timings, analysis_ms=analysis_ms,
                         stt_error=stt_error, ticket=ticket, merged=merged, message=message)

@@ -77,3 +77,14 @@
   toggle buttons; 404 and error pages.
 - Hazard rules extended for natural phrasings found while labelling ("people keep tripping", "covered in ice",
   "hole in the walkway", hissing near a gas line).
+
+## Phase 6: Demo hardening
+- Backend container migrates and seeds demo data on first start (`--if-empty`), so a fresh clone is usable right
+  after `make dev`; `make demo-reset` restores the exact starting state through the admin endpoint.
+- Hidden operator console at `/admin`: offline-mock fallback switch, live/auto modes, demo reset, health.
+- Hazard result screen polish (siren icon, no duplicated emergency text, "Report → ticket" for text-only reports).
+- `e2e/demo.spec.ts` automates the full stage demo (legacy form → QR photo report → live projector → duplicates →
+  gas hazard → cluster → technician brief → eval); passes 3 times in a row from a reset. Playwright runs on one
+  worker because every test shares the live stack.
+- Docs: README (5-command setup, phones/HTTPS via tunnel or deployment, env vars, limitations), ARCHITECTURE (Mermaid
+  system, pipeline sequence and data model), DEMO_SCRIPT (run-of-show with fallbacks), PITCH_NOTES; screenshots.

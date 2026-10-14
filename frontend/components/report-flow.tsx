@@ -494,8 +494,19 @@ export function ReportFlow({ qrCode }: { qrCode?: string }) {
       {phase === "done" && result && (
         <section aria-labelledby="done-heading" className="space-y-5">
           <div className="flex flex-col items-center text-center">
-            <span className={cn("grid size-16 place-items-center rounded-full", result.merged ? "bg-p3/15 text-p3" : "bg-success/15 text-success")}>
-              {result.merged ? <Users className="size-8" aria-hidden="true" /> : <CircleCheck className="size-9" aria-hidden="true" />}
+            <span
+              className={cn(
+                "grid size-16 place-items-center rounded-full",
+                result.hazard.is_hazard ? "bg-hazard-soft text-hazard" : result.merged ? "bg-p3/15 text-p3" : "bg-success/15 text-success",
+              )}
+            >
+              {result.hazard.is_hazard ? (
+                <Siren className="size-8" aria-hidden="true" />
+              ) : result.merged ? (
+                <Users className="size-8" aria-hidden="true" />
+              ) : (
+                <CircleCheck className="size-9" aria-hidden="true" />
+              )}
             </span>
             <h1 id="done-heading" ref={headingRef} tabIndex={-1} className="mt-3 text-2xl font-bold tracking-tight outline-none">
               {result.merged ? "Already reported" : result.hazard.is_hazard ? "Emergency alert sent" : "Thanks, it's reported"}
@@ -541,7 +552,7 @@ export function ReportFlow({ qrCode }: { qrCode?: string }) {
                 {result.report_count > 1 && <> · {result.report_count} people have reported this</>}
               </p>
               <div className="grid grid-cols-2 gap-3 border-t pt-3 text-center">
-                <Metric label="Photo → ticket" value={secs(result.photo_to_ticket_ms)} />
+                <Metric label={intake?.photo_url ? "Photo → ticket" : "Report → ticket"} value={secs(result.photo_to_ticket_ms)} />
                 <Metric label="Your time" value={secs(result.client_elapsed_ms)} />
               </div>
             </CardContent>

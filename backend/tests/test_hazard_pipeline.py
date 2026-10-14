@@ -33,7 +33,7 @@ def test_gas_report_is_instant_p1_without_the_llm(reseed, client, published, llm
     assert t is not None and t["is_hazard"] and t["hazard_type"] == "gas" and t["priority"] == "P1"
     assert t["location"]["room"] == "210" and t["category"] == "gas_smell"
     assert body["hazard"]["sources"] == ["rules"] and "911" in body["hazard"]["safety_text"]
-    assert body["llm_mode"] == "rules" and "Emergency alert" in body["message"]
+    assert body["llm_mode"] == "rules" and "On-call has been alerted" in body["message"]
 
     names = [n for n, _ in published]
     assert "ticket.created" in names and "hazard.alert" in names

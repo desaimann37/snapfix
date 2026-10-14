@@ -543,9 +543,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Reseed the SnapFix demo database")
     parser.add_argument("--no-history", action="store_true", help="campus + SOPs only, no tickets")
     parser.add_argument("--no-cluster", action="store_true", help="skip the clustering run")
+    parser.add_argument("--if-empty", action="store_true", help="only seed when the database has no buildings yet")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     db = SessionLocal()
+    if args.if_empty and db.query(Building).first() is not None:
+        print("database already seeded; skipping (use `make demo-reset` to restore the demo state)")
+        db.close()
+        return
     try:
         summary = run(db, history=not args.no_history, cluster=not args.no_cluster)
     finally:

@@ -89,4 +89,6 @@ def decide(rule_hits: list[RuleHit], llm_is_hazard: bool = False, llm_hazard_typ
 
 def safety_text(hazard_type: str | None, emergency_text: str) -> str:
     specific = taxonomy.SAFETY_TEXT.get(hazard_type or "", "")
-    return f"{specific} {emergency_text}".strip() if specific else emergency_text
+    if not specific:
+        return emergency_text
+    return specific if "911" in specific else f"{specific} {emergency_text}".strip()

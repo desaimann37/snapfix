@@ -5,6 +5,8 @@ export default defineConfig({
   testDir: "./e2e",
   timeout: 60_000,
   retries: 0,
+  workers: 1, // every test talks to the same live stack + database
+  fullyParallel: false,
   reporter: [["list"]],
   use: {
     baseURL: process.env.E2E_BASE_URL || "http://localhost:3000",
