@@ -154,3 +154,62 @@ class TicketPatch(BaseModel):
     assignee: Optional[str] = None
     actor: str = "dispatcher"
     note: Optional[str] = None
+
+
+# --------------------------------------------------------------------------------------------------
+# Intake (report -> draft -> confirm)
+# --------------------------------------------------------------------------------------------------
+class HazardOut(BaseModel):
+    is_hazard: bool
+    hazard_type: Optional[str]
+    label: Optional[str]
+    rule_hits: list[str]
+    sources: list[str]
+    rationale: str
+    safety_text: Optional[str]
+
+
+class ReportIntakeOut(BaseModel):
+    report_id: uuid.UUID
+    draft: TicketDraft
+    location: Optional[LocationOut]
+    location_method: str
+    location_explanation: str
+    location_candidates: list[LocationOut]
+    needs_confirmation: bool
+    confirmation_reasons: list[str]
+    hazard: HazardOut
+    llm_mode: str
+    extraction_error: Optional[str]
+    photo_url: Optional[str]
+    transcript: Optional[str]
+    stt_error: Optional[str]
+    timings: dict[str, int]
+    analysis_ms: int
+    ticket: Optional[TicketOut] = None  # set when the hazard fast path already created/merged the ticket
+    merged: bool = False
+    message: Optional[str] = None
+
+
+class DraftEdits(BaseModel):
+    title: Optional[str] = Field(default=None, max_length=160)
+    summary: Optional[str] = None
+    category: Optional[CategoryKey] = None
+    severity: Optional[Literal[1, 2, 3, 4]] = None
+
+
+class ConfirmIn(BaseModel):
+    edits: DraftEdits = DraftEdits()
+    location_id: Optional[uuid.UUID] = None
+    client_elapsed_ms: Optional[int] = Field(default=None, ge=0, le=3_600_000)
+
+
+class ConfirmOut(BaseModel):
+    ticket: TicketOut
+    merged: bool
+    message: str
+    report_count: int
+    photo_to_ticket_ms: int
+    client_elapsed_ms: Optional[int]
+    hazard: HazardOut
+    dedupe: Optional[dict[str, Any]] = None

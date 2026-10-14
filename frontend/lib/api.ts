@@ -141,3 +141,81 @@ export function qs(params: Record<string, string | number | boolean | undefined 
   const s = sp.toString();
   return s ? `?${s}` : "";
 }
+
+// ---- intake ---------------------------------------------------------------------------------------
+export interface TicketDraft {
+  title: string;
+  summary: string;
+  category: string;
+  trade: string;
+  severity: 1 | 2 | 3 | 4;
+  severity_reason: string;
+  is_hazard: boolean;
+  hazard_type: string | null;
+  asset_type: string | null;
+  location_text_from_image: string | null;
+  location_text_from_user: string | null;
+  visible_evidence: string[];
+  needs_clarification: boolean;
+  clarifying_question: string | null;
+  confidence: number;
+  image_relevant: boolean;
+}
+
+export interface HazardInfo {
+  is_hazard: boolean;
+  hazard_type: string | null;
+  label: string | null;
+  rule_hits: string[];
+  sources: string[];
+  rationale: string;
+  safety_text: string | null;
+}
+
+export interface IntakeResponse {
+  report_id: string;
+  draft: TicketDraft;
+  location: LocationRef | null;
+  location_method: string;
+  location_explanation: string;
+  location_candidates: LocationRef[];
+  needs_confirmation: boolean;
+  confirmation_reasons: string[];
+  hazard: HazardInfo;
+  llm_mode: string;
+  extraction_error: string | null;
+  photo_url: string | null;
+  transcript: string | null;
+  stt_error: string | null;
+  timings: Record<string, number>;
+  analysis_ms: number;
+  ticket: Ticket | null;
+  merged: boolean;
+  message: string | null;
+}
+
+export interface ConfirmResponse {
+  ticket: Ticket;
+  merged: boolean;
+  message: string;
+  report_count: number;
+  photo_to_ticket_ms: number;
+  client_elapsed_ms: number | null;
+  hazard: HazardInfo;
+  dedupe: Record<string, unknown> | null;
+}
+
+export interface TaxonomyCategory {
+  key: string;
+  label: string;
+  trade: string;
+  description: string;
+  default_severity: number;
+}
+
+export interface Taxonomy {
+  trades: string[];
+  categories: TaxonomyCategory[];
+  severities: Record<string, string>;
+  hazard_types: { key: string; label: string }[];
+}

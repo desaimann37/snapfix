@@ -400,7 +400,9 @@ def planted_specs(campus: Campus, now: datetime) -> list[TicketSpec]:
     return specs
 
 
-def materialize(db: Session, campus: Campus, specs: list[TicketSpec], rng: random.Random, now: datetime) -> list[Ticket]:
+def materialize(
+    db: Session, campus: Campus, specs: list[TicketSpec], rng: random.Random, now: datetime
+) -> list[Ticket]:
     specs.sort(key=lambda s: s.created_at)
     tickets: list[Ticket] = []
     for i, spec in enumerate(specs):

@@ -1,9 +1,12 @@
 from datetime import timedelta
 
+import pytest
 from sqlalchemy import func, select
 
 from app.models import SOP, Asset, Building, Location, Team, Ticket, utcnow
 from app.seed import generate
+
+pytestmark = pytest.mark.usefixtures("module_seed")
 
 OPEN = ("new", "triaged", "assigned", "in_progress")
 

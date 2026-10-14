@@ -45,6 +45,12 @@ def seeded(engine) -> dict:
     return _seed()
 
 
+@pytest.fixture(scope="module")
+def module_seed(engine) -> dict:
+    """Pristine demo state for a whole module (for tests that assert on seeded counts)."""
+    return _seed()
+
+
 @pytest.fixture
 def reseed(engine) -> dict:
     """Fresh demo state for tests that mutate data."""

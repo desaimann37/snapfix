@@ -1,3 +1,8 @@
+import pytest
+
+pytestmark = pytest.mark.usefixtures("module_seed")
+
+
 def test_health(client):
     body = client.get("/api/health").json()
     assert body["db"] is True and body["llm_mode"] == "mock"

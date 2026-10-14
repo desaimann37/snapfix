@@ -10,7 +10,6 @@ import hashlib
 import logging
 import re
 import threading
-from functools import lru_cache
 from typing import Any, Protocol
 
 import numpy as np
@@ -90,8 +89,11 @@ class LocalEmbedder:
         return np.asarray(vecs, dtype=np.float32)
 
 
-@lru_cache
-def get_embedder() -> Embedder:
+_embedder: Embedder | None = None
+_embedder_lock = threading.Lock()
+
+
+def _load_embedder() -> Embedder:
     settings = get_settings()
     if settings.embedding_backend == "hash":
         return HashEmbedder()
@@ -105,9 +107,19 @@ def get_embedder() -> Embedder:
         return HashEmbedder()
 
 
+def get_embedder() -> Embedder:
+    """Load once; concurrent callers (warm-up thread + first request) wait for the same load."""
+    global _embedder
+    if _embedder is None:
+        with _embedder_lock:
+            if _embedder is None:
+                _embedder = _load_embedder()
+    return _embedder
+
+
 def embedder_status() -> str:
     """Name of the loaded embedder, or 'loading' (doesn't trigger a model load)."""
-    return get_embedder().name if get_embedder.cache_info().currsize else "loading"
+    return _embedder.name if _embedder is not None else "loading"
 
 
 def embed_one(text: str, *, query: bool = False) -> list[float]:

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme";
 import { SiteHeader } from "@/components/site-header";
+import { PwaRegister } from "@/components/pwa";
 
 export const metadata: Metadata = {
   title: { default: "SnapFix", template: "%s · SnapFix" },
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <SiteHeader />
           <main id="main">{children}</main>
+          <PwaRegister />
         </ThemeProvider>
       </body>
     </html>
