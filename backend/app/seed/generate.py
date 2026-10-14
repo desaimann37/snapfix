@@ -319,7 +319,8 @@ def keep_open_tickets_tidy(specs: list[TicketSpec], campus: Campus, now: datetim
         if spec.status in ("resolved", "closed") and spec.resolved_at is None:
             priority, _ = taxonomy.compute_priority(
                 spec.severity, taxonomy.location_criticality(spec.location.room_type, spec.category), spec.is_hazard)
-            spec.resolved_at = min(spec.created_at + resolution_delay(priority, rng), now - timedelta(minutes=5))
+            latest = now - timedelta(minutes=rng.uniform(25, 900))  # spread recent closures out realistically
+            spec.resolved_at = min(spec.created_at + resolution_delay(priority, rng), latest)
             if spec.resolved_at <= spec.created_at:
                 spec.resolved_at = spec.created_at + timedelta(minutes=30)
         # merged reports can't arrive after the ticket was resolved

@@ -219,3 +219,85 @@ export interface Taxonomy {
   severities: Record<string, string>;
   hazard_types: { key: string; label: string }[];
 }
+
+// ---- dashboard / intelligence ---------------------------------------------------------------------
+export interface Kpis {
+  open_total: number;
+  open_by_priority: Record<Priority, number>;
+  hazards_open: number;
+  hazards_24h: number;
+  sla_breaches: number;
+  duplicates_prevented_30d: number;
+  duplicates_merged_live: number;
+  reports_24h: number;
+  reports_per_day_14d: number;
+  photo_to_ticket_ms: { count: number; avg: number | null; p50: number | null; p95: number | null };
+  median_time_to_triage_s: number | null;
+  open_clusters: number;
+  avg_cost_per_report_usd: number | null;
+  llm_mode: string;
+}
+
+export interface ClusterInfo {
+  id: string;
+  name: string;
+  hypothesis: string;
+  recommended_action: string | null;
+  confidence: number;
+  status: "open" | "confirmed" | "dismissed";
+  building: { code: string; name: string } | null;
+  llm_mode: string | null;
+  created_at: string;
+  tickets: Ticket[];
+  parent_ticket: Ticket | null;
+}
+
+export interface ActivityItem {
+  id: string;
+  type: string;
+  actor: string;
+  rationale: string | null;
+  created_at: string;
+  ticket: { id: string; short_code: string; title: string; priority: Priority; is_hazard: boolean };
+}
+
+export interface TrendData {
+  trades: string[];
+  days: Array<{ date: string } & Record<string, number | string>>;
+}
+
+export interface BuildingSummary {
+  code: string;
+  name: string;
+  floors: number;
+  open_by_floor: Record<string, number>;
+  open_total: number;
+  hazards: number;
+  busiest_floor: number;
+}
+
+export interface CitedLine {
+  text: string;
+  citation: string | null;
+}
+
+export interface TechBrief {
+  summary: string;
+  likely_causes: { cause: string; reasoning: string; likelihood: "high" | "medium" | "low" }[];
+  tools_parts: string[];
+  safety: CitedLine[];
+  steps: CitedLine[];
+  history_note: string | null;
+  sop_coverage: "matched" | "partial" | "none";
+  sources: { citation: string; title: string; section: string }[];
+  history: { short_code: string; title: string; days_ago: number; status: string; resolution: string | null }[];
+  llm_mode: string;
+  generated_at: string;
+}
+
+export interface AgentReply {
+  answer: string;
+  tool_calls: { name: string; input: Record<string, unknown>; summary: string }[];
+  mode: string;
+  latency_ms: number;
+}

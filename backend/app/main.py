@@ -18,7 +18,7 @@ from app.config import get_settings
 from app.db import SessionLocal
 from app.events import broker
 from app.logging_setup import setup_logging
-from app.routers import admin, locations, meta, reports, sse, tickets
+from app.routers import admin, agent, clusters, dashboard, locations, meta, reports, sse, tickets
 from app.runtime import effective_llm_mode
 
 log = logging.getLogger("snapfix")
@@ -33,13 +33,35 @@ def _warm_embedder() -> None:
         log.exception("embedder warm-up failed")
 
 
+def _cluster_job() -> None:
+    from app.ai.cluster import run_clustering
+
+    try:
+        with SessionLocal() as db:
+            run_clustering(db)
+    except Exception:  # never let the background job crash the app
+        log.exception("clustering job failed")
+
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     setup_logging(settings.log_level)
     broker.bind_loop(asyncio.get_running_loop())
     threading.Thread(target=_warm_embedder, daemon=True).start()
+    scheduler = None
+    if settings.scheduler_enabled:
+        from datetime import datetime, timedelta
+
+        from apscheduler.schedulers.background import BackgroundScheduler
+
+        scheduler = BackgroundScheduler(daemon=True)
+        scheduler.add_job(_cluster_job, "interval", seconds=settings.cluster_interval_s, id="clustering",
+                          next_run_time=datetime.now() + timedelta(seconds=20), max_instances=1, coalesce=True)
+        scheduler.start()
     log.info("snapfix backend started", extra={"llm_mode": effective_llm_mode()})
     yield
+    if scheduler is not None:
+        scheduler.shutdown(wait=False)
 
 
 app = FastAPI(title="SnapFix API", version="0.1.0", lifespan=lifespan)
@@ -57,6 +79,9 @@ app.include_router(sse.router)
 app.include_router(admin.router)
 app.include_router(reports.router)
 app.include_router(meta.router)
+app.include_router(clusters.router)
+app.include_router(dashboard.router)
+app.include_router(agent.router)
 
 
 @app.get("/api/health", tags=["meta"])

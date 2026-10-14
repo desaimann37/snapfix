@@ -31,6 +31,15 @@
     --p3: 217 76% 45%;
     --p4: 215 16% 40%;
     --success: 142 72% 27%;
+    /* data-viz: categorical slots 1-4 (validated light, adjacent pairs), "Other", chart chrome */
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --series-4: #eda100;
+    --series-other: #a9a8a0;
+    --chart-grid: #e1e0d9;
+    --chart-axis: #898781;
+    --chart-surface: #ffffff;
   }
 
   .dark {
@@ -59,6 +68,15 @@
     --p3: 213 90% 70%;
     --p4: 215 20% 68%;
     --success: 142 60% 55%;
+    /* data-viz dark steps (validated against the dark card surface) */
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-other: #6b6a64;
+    --chart-grid: #263041;
+    --chart-axis: #8f96a3;
+    --chart-surface: #0f1624;
   }
 
   * {

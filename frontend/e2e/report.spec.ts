@@ -43,3 +43,20 @@ test("new tickets and hazard alerts appear live (SSE) without reloading", async 
   await expect(bar.getByText(/P1 hazard/i)).toBeVisible({ timeout: 3_000 });
   await expect(bar.getByText(gas.ticket.short_code)).toBeVisible();
 });
+
+test("manager dashboard shows the root-cause cluster and the assistant answers", async ({ page }) => {
+  await page.goto("/dashboard");
+  await expect(page.getByRole("heading", { name: "Operations dashboard" })).toBeVisible();
+  await expect(page.getByText(/water intrusion/i).first()).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByRole("button", { name: /Confirm: create one inspection ticket/ }).first()).toBeVisible();
+  await page.getByRole("button", { name: "Any hazards right now?" }).click();
+  await expect(page.getByText(/HAZARD/).last()).toBeVisible({ timeout: 15_000 });
+});
+
+test("ticket detail shows an SOP-cited technician brief", async ({ page, request }) => {
+  const found = await (await request.get("/api/tickets?q=Faucet%20leaking%20again")).json();
+  await page.goto(`/tickets/${found.items[0].short_code}`);
+  await expect(page.getByText("Technician brief")).toBeVisible();
+  await expect(page.getByText(/Faucet Cartridge Replacement §4/).first()).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByText(/repeat failure/i).first()).toBeVisible();
+});

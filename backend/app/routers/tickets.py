@@ -104,6 +104,16 @@ def get_ticket(ref: str, db: Session = Depends(get_db)) -> TicketDetail:
     return ticket_detail(ticket, list(children))
 
 
+@router.get("/{ref}/brief")
+def get_brief(ref: str, refresh: bool = False, db: Session = Depends(get_db)) -> dict:
+    """Technician brief: generated on first open, cached afterwards (regenerated if new reports arrived)."""
+    from app.ai.brief import generate_brief, is_stale
+
+    ticket = load_ticket(db, ref, full=True)
+    stale = ticket.brief_json is not None and is_stale(ticket)
+    return generate_brief(db, ticket, refresh=refresh or stale)
+
+
 @router.patch("/{ref}", response_model=TicketDetail)
 def patch_ticket(ref: str, body: TicketPatch, db: Session = Depends(get_db)) -> TicketDetail:
     ticket = load_ticket(db, ref, full=True)

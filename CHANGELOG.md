@@ -49,3 +49,18 @@
   AI decision log (classification, dedupe score table, routing rationale, escalation, notifications).
 - Tests: dedupe scoring/thresholds, 3 reports -> 1 ticket, severity never decreases, hazard fast path with the LLM
   down, merge without re-alert, routing table, Slack/Twilio payloads; Playwright: live queue + hazard bar via SSE.
+
+## Phase 4: Manager intelligence
+- Root-cause clustering every 2 minutes (APScheduler) and on demand: text embedding + floor + time features,
+  HDBSCAN when a building has enough open tickets, agglomerative fallback, cohesion check; Claude Haiku 5.5 names
+  each cluster and writes a hypothesis + recommended action. Confirm -> one parent inspection ticket linking all
+  members; Dismiss -> never resurrected. The planted ENGR floors 3–4 water-intrusion cluster is found exactly.
+- Technician brief: RAG over SOP sections (similarity + trade/asset boost; the best SOP's safety, tools and
+  procedure always included), asset ticket history, report texts and photos; Claude Sonnet 5.5 structured brief;
+  citations validated against retrieved sections (invented ones removed); "no matching SOP" said plainly; cached,
+  regenerated when new reports arrive.
+- KPIs, live activity feed, reports-per-day-by-trade trend, building hotspots, agent chat on `/dashboard`.
+- Dispatcher agent: Claude tool-use loop over read-only tools (search_tickets, get_ticket, get_clusters, get_kpis),
+  max 6 tool calls / 30 s; deterministic mock intents offline.
+- Tests: clustering, dismissal/confirmation, brief citations + history, KPIs, mock agent intents, live agent loop with
+  a stubbed client and tool-call cap; Playwright: dashboard cluster + assistant, SOP-cited brief.
