@@ -54,6 +54,10 @@ make dev                 # = docker compose up -d --build --wait  (Postgres+pgve
 make demo-reset          # any time: restore the exact demo starting state
 ```
 
+**Windows, one click:** double-click `start.cmd`. It starts Docker Desktop if needed, waits for the engine,
+starts SnapFix and opens the dashboard. `start.cmd -Reset` also restores the demo starting state, and `stop.cmd`
+stops everything (your data is kept).
+
 The first build downloads Python/Node dependencies and the local embedding model (about 5 minutes). Later starts take
 seconds.
 
